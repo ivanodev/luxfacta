@@ -1,0 +1,5 @@
+1. A parte mais difícil do desafio, em particular, foi não dispobilizar do tempo que gostaria para desenvolver a aplicação com maior tranquilidade, devido a quantidade de trabalhao no mesmo período em que estava estabelecido o prazo para desafio. Tecnicamente, trabalhar com o evento change de JTable. Na verdade não conseguir fazer o change das células disparar durante a digitação, somente depois do enter.
+
+2. Se fosse aconselhar a eu mesmo sobre o projeto, diria para usar Absolute Layout para na criação da interface desde o inicio.
+
+3. No desafio em si, não mudaria coisa alguma. Achei boa a proposta.
