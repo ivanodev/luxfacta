@@ -28,7 +28,7 @@ public class Poll implements Serializable {
 	
 	//@OneToMany(mappedBy = "poll", targetEntity = Option.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poll", cascade = CascadeType.PERSIST)
-	private List<Option> options;
+	private List<Option> options = null;
 	
 	@JsonIgnore
 	private Long views; 

@@ -4,9 +4,9 @@ import java.net.URL;
 
 public class URLImage {
 	
-	public URL getLocation() {
+	public URL getLocation( String imgName ) {
 		
-		return getClass().getResource( "com/luxfacta/desktop/icon" );
+		return getClass().getResource( imgName );
 		
 	}
 
