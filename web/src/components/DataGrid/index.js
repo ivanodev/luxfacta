@@ -1,34 +1,22 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
 
 export default function DataGrid ( props ) {
 
-    
-    let list = [
-        { id : 1, description : 'iPhone' },
-        { id : 2, description : 'MacBook' },
-        { id : 2, description : 'iPad' },
-    ]
-
-    let propList = [
-        { name : "id", label : 'Código' },
-        { name : "description", label : 'Descrição' }
-    ]
-
+    const { data, keyField, specColumns } = props;
 
     const columnHeadingFactory = () => {
 
         let pv = undefined;
         let columnHeading = [];
 
-        for ( let i = 0; i <= propList.length -1; i++ ) {
+        for ( let i = 0; i <= specColumns.length -1; i++ ) {
 
-            pv = propList[i];           
+            pv = specColumns[i];           
 
             columnHeading.push(
                 <th 
                     key={pv.name}>
-                    {pv.label}
+                    {pv.title}
                 </th>
             );     
 
@@ -38,17 +26,17 @@ export default function DataGrid ( props ) {
         
     }
 
-    const columnDataFactory = data => {
+    const dataFactory = item => {
 
         let pv = undefined;
         let cols = [];
 
-        for ( let i = 0; i <= propList.length -1; i++ ) {
+        for ( let i = 0; i <= specColumns.length -1; i++ ) {
 
-            pv = propList[i];
+            pv = specColumns[i];
 
             //const value = ObjectUtils.getPropertyValue( data, pv.name );
-            const value = data[ pv.name ];
+            const value = item[ pv.name ];
 
             cols.push( 
                 <td 
@@ -56,7 +44,7 @@ export default function DataGrid ( props ) {
                     { value }
                 </td>
             );   
-        }
+        } 
 
         return cols;
 
@@ -65,6 +53,7 @@ export default function DataGrid ( props ) {
     return (
 
         <div>
+          
             <table>
                 <thead>
                     <tr>
@@ -72,11 +61,11 @@ export default function DataGrid ( props ) {
                     </tr>
                 </thead>
                 <tbody>
-                { 
-                    list.map( item => (
+                { data &&
+                    data.map( item => (
                         
-                        <tr key={item._id}> 
-                            { columnDataFactory( item ) } 
+                        <tr key={item[keyField]}> 
+                            { dataFactory( item ) } 
                         </tr>   
                                 
                     ))
@@ -89,55 +78,3 @@ export default function DataGrid ( props ) {
     )
 
 }
-
-/*
-
-
-return (
-          
-    <div id="base" className="common-grid-base" >
-        <table id="common-grid-table" className="common-grid-table" onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}> 
-            <thead>  
-                {
-                    <tr id="row-grid-title" className="row-grid-title" >
-                        {columnTitle}
-                    </tr>
-                }
-                {
-                    props.showFilter && 
-                    <tr className="row-grid-filter">{fieldFilter}</tr>
-                }
-            </thead>                           
-            <tbody id="body-grid">
-            { 
-                props.list.map( item => (
-                    
-                    <tr key={item._id}  
-                        id="row-grid-data"   
-                        className="row-grid-data"                              
-                        onClick={(e, item)=>handleClickRow(e, item)} 
-                        onDoubleClick={(e, item)=>handleDblClickRow(e, item)} > 
-
-                        { addColumnData( item ) } 
-                    
-                        <td id="col-grid-btn" className="col-grid-btn">
-                            <div id="grid-buttons">
-                                { createEditButton( props.onRowEdit, item ) }
-                                { createDeleteButton( props.onRowDelete, item ) }
-                            </div>
-                        </td>
-                    </tr>   
-                            
-                ))
-            }
-            </tbody>   
-        </table>
-    </div>
-
-);
-
-
-
-
-
-*/

@@ -1,19 +1,33 @@
-import React, {useState, useEffect} from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
+//import { withRouter } from 'react-router-dom';
+import Browser from '../components/Browser';
 
-import api from '../service/api'; 
 
-import './styles.scss';
+//import './styles.scss';
 
 
 function PollBrowser( props ) {
 
+    let specColumns = [];
+
+    const createSpecColumn = ( name, title, dataType, idData = '', idTitle = '' ) => {
+        return { name: name, title: title, dataType: dataType, idData: idData, idTitle: idTitle };
+    }
+
+    specColumns.push( createSpecColumn( 'poll_id', 'ID', 'number' ) );
+    specColumns.push( createSpecColumn( 'poll_description', 'Enquete', 'string' ));
+
     return (
-        <h1>
-            Poll
-        </h1>
-    )
+
+            <Browser 
+                urn='poll' 
+                title='Enquete' 
+                keyname='poll_id' 
+                specColumns={specColumns}
+            />
+
+    );
 
 }
 
-export default withRouter(PollBrowser);
+export default PollBrowser;// withRouter(PollBrowser);

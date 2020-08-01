@@ -9,3 +9,8 @@ export const api = axios.create({
     }
 });
 
+export const get = async ( uri ) => {
+
+    return await api.get( `/${uri}` );
+
+}
