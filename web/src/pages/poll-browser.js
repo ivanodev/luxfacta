@@ -15,7 +15,19 @@ function PollBrowser( props ) {
     }
 
     specColumns.push( createSpecColumn( 'poll_id', 'ID', 'number' ) );
-    specColumns.push( createSpecColumn( 'poll_description', 'Enquete', 'string' ));
+    specColumns.push( createSpecColumn( 'poll_description', 'Enquete', 'string' ) );
+
+    const handleClick = ( e, item ) => {
+
+        alert('eu');
+        console.log( item );
+
+    }
+
+    const actions = [ 
+        { handler: handleClick, className : "", iconName: "edit" },
+        { handler: handleClick, className : "", iconName: "apply" }
+    ];
 
     return (
 
@@ -24,6 +36,7 @@ function PollBrowser( props ) {
                 title='Enquete' 
                 keyProp={'poll_id'} 
                 specColumns={specColumns}
+                actions={actions}
             />
 
     );

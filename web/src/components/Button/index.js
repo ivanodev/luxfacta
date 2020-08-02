@@ -17,21 +17,23 @@ export default function Button ( props ) {
 export function ButtonFactory ( sizeType, className, onClick, iconName, title, buttonType = "button" ) {
 
     let element = null;
+    let elementKey = Math.floor( Math.random() * 20 );
 
     if ( sizeType === 'small' ) {
 
-        if ( buttonType === submit ) {
+        if ( buttonType === 'submit' ) {
 
             element = ( 
-                <>
+            
                     <button 
                         id={className}                         
                         type={buttonType}
                         title={title}
+                        key={elementKey}
                     >                        
-                        <img src={GetImage24(iconName)} alt="" />                        
+                        <img src={GetImage16(iconName)} alt="" />                        
                     </button>    
-                </>          
+                        
             );
 
         } else {
@@ -42,6 +44,7 @@ export function ButtonFactory ( sizeType, className, onClick, iconName, title, b
                     type="button" 
                     onClick={( event ) => executeHandle( onClick, event )}
                     title={title}
+                    key={elementKey}
                 >
                     <img src={GetImage16(iconName)} alt=""/>
                 </button>
@@ -53,4 +56,28 @@ export function ButtonFactory ( sizeType, className, onClick, iconName, title, b
 
     return element;
 
+}
+
+async function executeHandle( handle, event ) {
+
+    event.persist();
+    event.target.disabled = true;
+    
+    try {
+
+        await handle(event);
+        
+    } catch ( err ) {        
+
+        throw new Error( 'O manipulador de eventos onClick de botão, capturou automaticamente ' +
+                            'um erro no sistema que não foi devidamente tratado pelo desenvolvedor. ' +
+                            'Se você é o desenvolvedor implemente o tratamento para este erro. ' + 
+                            `Se você não é o desenvolvedor, entre em contato com o administrador do sistema.
+Erro: ${err.stack}` ); // Está neste posicionamento para ficar com alinhamento correto na tela
+
+    } finally {
+
+        event.target.disabled = false;
+
+    }
 }

@@ -4,7 +4,7 @@ import { get } from '../../service/api';
 
 export default function Browser( props ){
 
-    const { urn, keyProp, specColumns } = props;
+    const { urn, keyProp, specColumns, actions } = props;
     const [ data, setData ] = useState([]);
 
 	useEffect( () => {
@@ -34,6 +34,7 @@ export default function Browser( props ){
                 data={data}
                 keyProp={keyProp}
                 specColumns={specColumns}
+                actions={actions}
             />
         </div>
     )

@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
+import { ButtonFactory } from '../Button';
+import ObjectUtils from '../../utils/ObjectUtils';
 
 export default function DataGrid ( props ) {
 
-    const { data, keyProp, specColumns } = props;
+    const { data, keyProp, specColumns, actions } = props;
     const selectedRowData = useRef();
 
     const selectRowData = ( rowData ) => {
@@ -42,8 +44,7 @@ export default function DataGrid ( props ) {
 
             pv = specColumns[i];
 
-            //const value = ObjectUtils.getPropertyValue( data, pv.name );
-            const value = item[ pv.name ];
+            const value = ObjectUtils.getPropertyValue( item, pv.name );
 
             cols.push( 
                 <td 
@@ -71,6 +72,7 @@ export default function DataGrid ( props ) {
                 <thead>
                     <tr>
                         { columnHeadingFactory() }
+                        { actions && <th key="actions">Ações</th> }
                     </tr>
                 </thead>
                 <tbody>
@@ -81,6 +83,19 @@ export default function DataGrid ( props ) {
                             onClick={ ( e )=>handleRowClick( e, item )}
                         > 
                             { dataFactory( item ) } 
+
+                            <td>
+                                <div>
+                                    { actions &&
+                                        actions.map( action => (
+
+                                            createBtnAction( action.handler, action.className, action.iconName, item )
+
+                                        ))
+                                    }
+                                </div>
+                            </td>
+
                         </tr>             
                     ))
                 }
@@ -90,5 +105,16 @@ export default function DataGrid ( props ) {
 
 
     )
+
+}
+
+function createBtnAction( handler, className, iconName, param ) {
+
+    if ( handler )
+        return ButtonFactory( 'small', className, () => handler( handler, param ), iconName );
+    else
+        return undefined;
+
+      
 
 }
