@@ -4,7 +4,7 @@ import { get } from '../../service/api';
 
 export default function Browser( props ){
 
-    const { urn, keyField, specColumns } = props;
+    const { urn, keyProp, specColumns } = props;
     const [ data, setData ] = useState([]);
 
 	useEffect( () => {
@@ -32,7 +32,7 @@ export default function Browser( props ){
         <div>
             <DataGrid 
                 data={data}
-                keyField={keyField}
+                keyProp={keyProp}
                 specColumns={specColumns}
             />
         </div>

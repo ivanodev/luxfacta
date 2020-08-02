@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 export default function DataGrid ( props ) {
 
-    const { data, keyField, specColumns } = props;
+    const { data, keyProp, specColumns } = props;
+    const selectedRowData = useRef();
+
+    const selectRowData = ( rowData ) => {
+
+        selectedRowData.current = rowData;
+
+    }
 
     const columnHeadingFactory = () => {
 
@@ -50,6 +57,12 @@ export default function DataGrid ( props ) {
 
     }
 
+    const handleRowClick = ( e, item ) => {
+
+        selectRowData( item );
+
+    } 
+
     return (
 
         <div>
@@ -64,10 +77,11 @@ export default function DataGrid ( props ) {
                 { data &&
                     data.map( item => (
                         
-                        <tr key={item[keyField]}> 
+                        <tr key={item[ keyProp ] }
+                            onClick={ ( e )=>handleRowClick( e, item )}
+                        > 
                             { dataFactory( item ) } 
-                        </tr>   
-                                
+                        </tr>             
                     ))
                 }
                 </tbody>

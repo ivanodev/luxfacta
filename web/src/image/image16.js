@@ -28,8 +28,6 @@ export const ImageSeparation16 = Separation16;
 export const ImageViewer16 = Viewer16;
 export const ImageBinoculars16 = Binoculars16
 
-
-
 export function GetImage16( name ) {
 
     switch ( name ) {

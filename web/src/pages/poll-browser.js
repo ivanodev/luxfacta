@@ -22,7 +22,7 @@ function PollBrowser( props ) {
             <Browser 
                 urn='poll' 
                 title='Enquete' 
-                keyname='poll_id' 
+                keyProp={'poll_id'} 
                 specColumns={specColumns}
             />
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import './styles.scss';
 
-export default function WImage( props ) {
+export default function Image( props ) {
 
     const { pathImage } = props;
 

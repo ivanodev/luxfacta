@@ -17,11 +17,11 @@ import Undo24 from '../image/24/undo-black.png';
 import Remove24 from '../image/24/remove-black.png';
 import AddG24 from '../image/24/add-black.png';
 import Close24 from '../image/24/close-black.png';
-import MenuCRM24 from  './svg/crm-black.svg';  //'../image/24/menu-crm-black.png';
-import MenuProduct24 from './svg/box-black.svg';  //'../image/24/menu-product-black.png';
-import MenuAddressing24 from './svg/map-black.svg';  //'../image/24/menu-addressing-black.png';
-import MenuGoodsMovement24 from './svg/forklift-black.svg'  //'../image/24/menu-goods-movement-black.png';
-import MenuAccessControl24 from './svg/access-control-black.svg';  //'../image/24/menu-access-control-black.png';
+import MenuCRM24 from  './svg/crm-black.svg';  
+import MenuProduct24 from './svg/box-black.svg'; 
+import MenuAddressing24 from './svg/map-black.svg'; 
+import MenuGoodsMovement24 from './svg/forklift-black.svg';
+import MenuAccessControl24 from './svg/access-control-black.svg';
 
 
 export const ImageAdd24 = Add24;
