@@ -17,7 +17,7 @@ export default function Button ( props ) {
 export function ButtonFactory ( sizeType, className, onClick, iconName, title, buttonType = "button" ) {
 
     let element = null;
-    let elementKey = Math.floor( Math.random() * 20 );
+    let elementKey = Math.floor( Math.random() * 2000 );
 
     if ( sizeType === 'small' ) {
 
@@ -68,12 +68,14 @@ async function executeHandle( handle, event ) {
         await handle(event);
         
     } catch ( err ) {        
-
+        /*
         throw new Error( 'O manipulador de eventos onClick de botão, capturou automaticamente ' +
                             'um erro no sistema que não foi devidamente tratado pelo desenvolvedor. ' +
                             'Se você é o desenvolvedor implemente o tratamento para este erro. ' + 
                             `Se você não é o desenvolvedor, entre em contato com o administrador do sistema.
-Erro: ${err.stack}` ); // Está neste posicionamento para ficar com alinhamento correto na tela
+Erro: ${err.stack}` ); // Está neste posicionamento para ficar com alinhamento correto na tela*/
+
+        throw new Error( err.stack );
 
     } finally {
 

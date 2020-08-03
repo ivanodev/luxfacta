@@ -5,7 +5,6 @@ import Browser from '../components/Browser';
 
 //import './styles.scss';
 
-
 function PollBrowser( props ) {
 
     let specColumns = [];
@@ -19,26 +18,23 @@ function PollBrowser( props ) {
 
     const handleClick = ( e, item ) => {
 
-        alert('eu');
-        console.log( item );
+        alert('action customized');
 
     }
 
     const actions = [ 
-        { handler: handleClick, className : "", iconName: "edit" },
-        { handler: handleClick, className : "", iconName: "apply" }
+        { handler: handleClick, className : "", iconName: "list" }
     ];
 
+
     return (
-
-            <Browser 
-                urn='poll' 
-                title='Enquete' 
-                keyProp={'poll_id'} 
-                specColumns={specColumns}
-                actions={actions}
-            />
-
+        <Browser 
+            urn='poll' 
+            title='Enquete' 
+            keyProp={'poll_id'} 
+            specColumns={specColumns}
+            customActions={actions}
+        />
     );
 
 }
