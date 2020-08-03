@@ -8,8 +8,7 @@ export default function Browser( props ){
     const [ data, setData ] = useState([]);
 
     const customActions = useRef( props.customActions );
-
-
+    
     const [ actions, setActions ] = useState(undefined);
 
 	useEffect( () => {
@@ -56,7 +55,7 @@ export default function Browser( props ){
 
 
     },[]);
-    
+
 
     const handleClickEdit = ( event, item ) => {
 
