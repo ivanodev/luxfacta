@@ -3,7 +3,6 @@ import { ButtonFactory } from '../Button';
 import ObjectUtils from '../../utils/ObjectUtils';
 
 export default function DataGrid ( props ) {
-    
 
     const { data, keyProp, specColumns, actions } = props;
     const selectedRowData = useRef();
@@ -36,7 +35,7 @@ export default function DataGrid ( props ) {
         
     }
 
-    const dataFactory = item => {
+    const rowDataFactory = item => {
 
         let specColumn = undefined;
         let cols = [];
@@ -47,12 +46,51 @@ export default function DataGrid ( props ) {
 
             const value = ObjectUtils.getPropertyValue( item, specColumn.name );
 
-            cols.push( 
-                <td 
-                    key={`${i}`} >
-                    { value }
-                </td>
-            );   
+            /* 
+                verifica os tipos de dados 
+                para definir o className e id diferentes
+                para atribuir diferente formatação
+                no css e especifidades de cada tipo de valor
+            */
+
+            if ( specColumn.dataType === 'number' ) {
+
+                cols.push( 
+                    <td 
+                        key={`${i}`} >
+                        { value }
+                    </td>
+                );   
+
+            } else if (  specColumn.dataType === 'string' ) {
+
+                cols.push( 
+                    <td 
+                        key={`${i}`} >
+                        { value }
+                    </td>
+                );   
+
+            } else if (  specColumn.dataType === 'datetime' ) {
+
+                cols.push( 
+                    <td 
+                        key={`${i}`} >
+                        { value }
+                    </td>
+                );   
+
+            }  else if (  specColumn.dataType === 'date' ) {
+
+                cols.push( 
+                    <td 
+                        key={`${i}`} >
+                        { value }
+                    </td>
+                );   
+
+            } 
+            
         } 
 
         return cols;
@@ -92,7 +130,7 @@ export default function DataGrid ( props ) {
                         <tr key={item[ keyProp ] }
                             onClick={ ( e )=>handleRowClick( e, item )}
                         > 
-                            { dataFactory( item ) } 
+                            { rowDataFactory( item ) } 
 
                             <td>
                                 <div>
@@ -112,7 +150,6 @@ export default function DataGrid ( props ) {
                 </tbody>
             </table>
         </div>
-
 
     )
 

@@ -1,15 +1,19 @@
 import React from 'react';
 
+import './theme/bootstrap.scss';
 
-//import './theme/bootstrap.scss';
-
-import PollBrowser from './pages/poll-browser';
+import MainHeader from './components/MainHeader';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routes/routes';
 
 export default function App() {
 
 	return (
 		<div>
-			<PollBrowser />
+			<MainHeader />
+			<BrowserRouter>
+				<Routes />
+			</BrowserRouter>
 		</div>
 	);
 

@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 
 function Menu( props ) {
 
-
     function pollHandleClick() {
 
         props.history.push( `/${'poll'}` );
@@ -25,6 +24,7 @@ function Menu( props ) {
                 </span>
             </div>
         </div>
+
     )
 
 }

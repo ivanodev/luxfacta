@@ -1,14 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import DataGrid from '../DataGrid';
 import { get } from '../../service/api';
+import ObjectUtils from '../../utils/ObjectUtils';
+import { withRouter } from 'react-router-dom';
 
-export default function Browser( props ){
+function Browser( props ) {
 
-    const { urn, keyProp, specColumns } = props;
+    const { urn, keyProp, specView } = props;
     const [ data, setData ] = useState([]);
 
     const customActions = useRef( props.customActions );
-    
+    const specColumns = useRef([]);
+
     const [ actions, setActions ] = useState(undefined);
 
 	useEffect( () => {
@@ -27,12 +30,12 @@ export default function Browser( props ){
 
 		}
 
-        fetchData();
+        fetchData ();
 
     }, [urn] );
 
 
-    useEffect( () => {
+    const setupActions = useCallback( () => {
 
         const actions = [ 
             { handler: handleClickEdit, className : "", iconName: "edit" },
@@ -53,33 +56,74 @@ export default function Browser( props ){
 
         setActions( actions );
 
+    }, [customActions]);
 
-    },[]);
+
+    const setupColumns = useCallback( () => {
+
+        const svOProps = specView.svOProps;
+
+        const createSpecColumn = ( name, title, dataType, idData = '', idTitle = '' ) => {
+            return { 
+                name: name, 
+                title: title,
+                dataType: dataType,
+                idData: idData,
+                idTitle: idTitle 
+            };
+        }
+
+        for ( let i = 0; i < svOProps.length; i++) {
+    
+            const prop = svOProps[ i ];
+            const specColumn = createSpecColumn( prop.name, prop.label, prop.dataType );
+            
+            specColumns.current.push( specColumn );
+    
+        }
+
+    },[specView.svOProps]);
+
+
+    useEffect( () => {
+
+        setupColumns();
+        setupActions();
+        
+
+    },[setupColumns,setupActions]);
+
 
 
     const handleClickEdit = ( event, item ) => {
 
-        alert( "edit" );
+        const id = ObjectUtils.getPropertyValue( item, keyProp );
+
+        props.history.push(`/${urn}/${id}`);
 
     }
+
 
     const handleClickDelete = ( event, item ) => {
 
-        alert( "delete" );
+        const id = ObjectUtils.getPropertyValue( item, keyProp );
+
+        alert( id );
 
     }
+    
    
-
     return (
-        <div>
+        <form>
             <DataGrid 
                 data={data}
                 keyProp={keyProp}
-                specColumns={specColumns}
+                specColumns={specColumns.current}
                 actions={actions}
             />
-        </div>
+        </form>
     )
 
-
 }
+
+export default withRouter( Browser );
