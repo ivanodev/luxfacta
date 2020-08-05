@@ -9,8 +9,8 @@ function Edit( props ) {
 
     const { urn, layouts } = props; 
     const { id } = props.match.params; 
-
     const [ data, setData ] = useState(undefined);
+
  
     useEffect( () => {
 
@@ -28,7 +28,7 @@ function Edit( props ) {
 
         fetch();
 
-    }, [urn, id]);
+    }, [ urn, id ] );
 
 
     const mountView = () => {

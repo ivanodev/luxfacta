@@ -4,14 +4,13 @@ import React from 'react';
 
 export default function Input( props ) {
 
-    console.log( props );
-
     const { spec, data } = props;
     let type = 'text';
 
     if ( spec.dataType === 'number' )
         type = 'number';
 
+    /*
     const handleFocus = e => {
 
         if ( spec && spec.onFocus )
@@ -38,14 +37,14 @@ export default function Input( props ) {
         if ( spec && spec.onInput )
             spec.onInput( e );
                     
-    }    
+    }    */
 
     return (
 
-       <div className="winput-content">
+       <div className="input-content">
             <label >{spec.label}</label>
             <input 
-                className="winput"               
+                className="input"               
                 name={spec.name}                
                 id={`${spec.path}.${spec.name}`}
                 title={spec.label}

@@ -9,7 +9,7 @@ export default function ObjectView ( props ) {
 
     if ( ( specViewLayout instanceof SpecViewLayout ) === false ) {
         throw new Error( 
-            `The WEdit visualization component waits to receive an instance of the SpecViewLayout class and received ${specViewLayout}` );
+            `The Edit visualization component waits to receive an instance of the SpecViewLayout class and received ${specViewLayout}` );
     } 
 
 
@@ -36,14 +36,16 @@ export default function ObjectView ( props ) {
     }
 
 
-    const paintCmp = ( svProp, data, index ) => {
+    const drawCmp = ( svProp, data, index ) => {
 
         switch ( svProp.dataType ) {
 
             case 'string':  
-                return <Input spec={svProp} data={data} />;    
+                return <Input spec={svProp} data={data} />
+
             case 'number':  
-                return <Input spec={svProp} data={data} />;    
+                return <Input spec={svProp} data={data} />    
+
             default: 
                 break;
 
@@ -54,8 +56,6 @@ export default function ObjectView ( props ) {
 
     if ( specViewLayout.specDTV ) {
 
-        console.log( '.....', dataObject ); 
-
         const specDTV = specViewLayout.specDTV;
         const svProps = specDTV.svOProps; 
 
@@ -65,7 +65,9 @@ export default function ObjectView ( props ) {
 
             console.log( dataObject )
 
-            cmps.push( paintCmp( svProp, dataObject, i ) );  
+            const cmp = drawCmp( svProp, dataObject, i );
+
+            cmps.push( cmp );  
             
         }
 
