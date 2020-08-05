@@ -17,7 +17,7 @@ export default function Button ( props ) {
 export function ButtonFactory ( sizeType, className, onClick, iconName, title, buttonType = "button" ) {
 
     let element = null;
-    let elementKey = Math.floor( Math.random() * 2000 );
+    let elementKey = Math.floor( Math.random() * 5000 );
 
     if ( sizeType === 'small' ) {
 

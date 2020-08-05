@@ -89,10 +89,8 @@ function Browser( props ) {
 
         setupColumns();
         setupActions();
-        
 
     },[setupColumns,setupActions]);
-
 
 
     const handleClickEdit = ( event, item ) => {
