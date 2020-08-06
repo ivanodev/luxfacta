@@ -1,6 +1,9 @@
 import React from 'react';
 import { LayoutType, SpecViewLayout } from '../../infra/specview/SpecViewLayout';
 import Input from '../Input';
+import { ObjectPropertyType } from '../../infra/specview/SpecViewObjectProp';
+import ObjectUtils from '../../utils/ObjectUtils';
+import ObjectListView from '../ObjectListView';
 
 export default function ObjectView ( props ) {
 
@@ -41,10 +44,10 @@ export default function ObjectView ( props ) {
         switch ( svProp.dataType ) {
 
             case 'string':  
-                return <Input spec={svProp} data={data} />
+                return <Input key={index} spec={svProp} data={data} />
 
             case 'number':  
-                return <Input spec={svProp} data={data} />    
+                return <Input key={index} spec={svProp} data={data} />    
 
             default: 
                 break;
@@ -53,26 +56,87 @@ export default function ObjectView ( props ) {
 
     }
 
+    const drawObject = ( specViewLayout, dataObject, index ) => {
+
+        let viewObject = undefined;
+    
+        if ( specViewLayout ) {
+
+            viewObject = <ObjectView
+                             key={index}
+                             dataObject={dataObject} 
+                             specViewLayout={specViewLayout} 
+                         />                        
+                
+        } 
+
+        return viewObject;
+
+    }
+
+    const drawObjectList = ( specViewLayout, dataObjectList, svOProp, index ) => {
+
+        let viewObjectList = undefined;
+
+        viewObjectList = <ObjectListView 
+                            specLayout={specViewLayout} 
+                            dataList={dataObjectList} 
+                            svOProp={svOProp} 
+                        />
+    
+        
+        return viewObjectList;
+
+
+    }
+
 
     if ( specViewLayout.specDTV ) {
 
         const specDTV = specViewLayout.specDTV;
         const svProps = specDTV.svOProps; 
+        let cmp = null;
 
         for ( let i = 0 ; i < svProps.length; i++ ) {
 
             const svProp = svProps[ i ];
+            console.log( i );
 
-            console.log( dataObject )
+            switch ( svProp.propertyType ) {
 
-            const cmp = drawCmp( svProp, dataObject, i );
+                case ObjectPropertyType.COMMON : 
+                
+                    cmp = drawCmp( svProp, dataObject, i );
+
+                break;
+
+                case ObjectPropertyType.OBJECT : 
+                
+                    const dataObjectProp = ObjectUtils.getPropertyValue( dataObject, svProp.name ); 
+                    let layObjectProp = specViewLayout.findLayout( svProp.specDTVObject.objectName );
+                
+                    cmp = drawObject( layObjectProp, dataObjectProp );
+
+                break;
+
+                case ObjectPropertyType.LIST :
+
+                    const dataObjectList = dataObject[svProp.name]; 
+                    let layObjectListProp = specViewLayout.findLayout( svProp.specDTVObject.objectName );
+                    
+                    cmp = drawObjectList( layObjectListProp, dataObjectList, svProp, i );
+
+                break;
+
+                default:
+                    break;
+            }
 
             cmps.push( cmp );  
             
         }
 
     }
-
 
     return (
 

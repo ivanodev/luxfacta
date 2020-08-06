@@ -72,7 +72,7 @@ export default class ObjectUtils {
             if ( props.length > 1 ) {
                 
                 let name = '';
-                let proName = props[ props.length - 1];
+                let propName = props[ props.length - 1 ];
     
                 for ( let i = 0; i <= props.length - 1; i++ ) { 
     
@@ -89,14 +89,23 @@ export default class ObjectUtils {
                     if ( !value ) {
 
                         return undefined;
+
                     } 
 
                     if ( value && Array.isArray( value ) === true ) {
 
-                        for ( let j = 0; j <= value.length -1; i++ ) {
+                        if ( name === propName ) {
 
-                            const obj = value[0];
-                            return this.getPropertyValue( obj, proName );
+                            return value;
+
+                        } else {
+
+                            for ( let j = 0; j <= value.length -1; i++ ) {
+
+                                const obj = value[0];
+                                return this.getPropertyValue( obj, propName );
+
+                            }
 
                         }
                         

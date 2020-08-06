@@ -4,10 +4,12 @@ import { withRouter } from 'react-router-dom';
 import { get } from '../../service/api';
 import { SpecViewType } from '../../infra/specview/SpecView';
 import ObjecView from '../../components/ObjectView';
+import ObjectListView from '../ObjectListView';
+import ObjectUtils from '../../utils/ObjectUtils';
 
 function Edit( props ) {
 
-    const { urn, layouts } = props; 
+    const { urn, layouts, layoutType } = props; 
     const { id } = props.match.params; 
     const [ data, setData ] = useState(undefined);
 
@@ -58,6 +60,25 @@ function Edit( props ) {
                         );
                         
                         break;
+
+                    case SpecViewType.LIST :
+
+                        const specDTV = specLayout.specDTV;
+
+                        const dataList = ObjectUtils.getPropertyValue( data, specDTV.path );
+
+                         console.log( ' list ', dataList )
+
+                        views.push (
+                            <ObjectListView
+                                key={i}
+                                dataList={dataList} 
+                                specViewLayout={specLayout} 
+                            />
+
+                        );
+
+                    break;
                 
                     default:
                         break;
@@ -77,7 +98,7 @@ function Edit( props ) {
     return (
 
         <div>
-            { views };
+            { views }
         </div>
 
     )

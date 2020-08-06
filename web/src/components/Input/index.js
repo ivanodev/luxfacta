@@ -54,7 +54,7 @@ export default function Input( props ) {
                 minLength={spec.minLength}
                 maxLength={spec.maxLength} 
                 datatype={spec.dataType}
-                value={data[spec.name]} 
+                defaultValue={data[spec.name]} 
                 autoComplete="off"
                 spec={spec}
             /> 

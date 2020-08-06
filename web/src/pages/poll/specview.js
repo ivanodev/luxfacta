@@ -13,7 +13,7 @@ const SVPollBrowser = () => {
 
 const SVPoll = () => {
 
-    let svPoll = new SpecDataView( 'poll', '', SpecViewType.OBJECT );    
+    let svPoll = new SpecDataView( 'poll', '', SpecViewType.OBJECT );
     svPoll.addString( 'poll_description', 'poll', '', true, 0, 50 );
 
     return svPoll;
@@ -25,11 +25,13 @@ const SVOptions = () => {
     let svOptions = new SpecDataViewList( 'options', '', 'option', 'option_description', '', 'poll.options', true );
     svOptions.addString( 'option_description', 'poll.options', '', true, 0, 50 );
 
+    return svOptions;
+
 }
 
 export const SpecViewPollBrowser = SVPollBrowser();
 export const SpecViewPoll = SVPoll();
-export const SpecViewOptins = SVOptions();
+export const SpecViewOptions = SVOptions();
 
 
 

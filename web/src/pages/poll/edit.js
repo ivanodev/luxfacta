@@ -1,16 +1,19 @@
 import React from 'react';
 import Edit from '../../components/Edit';
 import { SpecViewLayout, LayoutType } from '../../infra/specview/SpecViewLayout';
-import { SpecViewPoll } from './specview';
+import { SpecViewPoll, SpecViewOptions } from './specview';
 
 function PollEdit ( props ) {
 
     let layoutPoll = new SpecViewLayout( SpecViewPoll );
     layoutPoll.layoutType = LayoutType.DUPLE;
 
+    let layoutOptions = new SpecViewLayout( SpecViewOptions );
+    layoutOptions.layoutType = LayoutType.SINGLE;
 
     let layouts = [];
     layouts.push( layoutPoll );
+    layouts.push( layoutOptions );
 
     return (
 
@@ -18,6 +21,7 @@ function PollEdit ( props ) {
             urn={'poll'}
             keyProp={'poll_id'}  
             layouts={layouts} 
+            layoutType={LayoutType.DUPLE}
         />        
     )
 
