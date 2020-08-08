@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import ObjectUtils from '../../utils/ObjectUtils';
 import ObjectView from '../ObjectView';
 
+import './styles.scss';
+import { ButtonFactory } from '../Button';
+
 export default function ObjectListView ( props )  {
 
     const { dataList, specViewLayout } = props;
@@ -14,24 +17,35 @@ export default function ObjectListView ( props )  {
 
     }
 
+    const handleClickNewButton = ( e ) => {
+
+       
+
+
+    }
+
+    const handleClickDeleteButton = ( e ) => {
+
+    }
+
     return (
         <>
             <div 
-                //wlist={ JSON.stringify(dataList) }
+                wlist={ JSON.stringify(dataList) }
                 type={"object-list"}
                 title={ specViewLayout.title }
-
+                className="layout-object-grid-li"
             >
-                <div className="wlayout-header_object-grid-li" >
-                    <label className="wlayout-header-title-object-grid-li">{ specViewLayout.title }</label> 
-                    {<hr/>}
+                <div className="layout-header_object-grid-li" >
+                    <label className="layout-header-title-object-grid-li">{ specViewLayout.title }</label> 
+                    <hr/>
                 </div>                            
                 <div className="group-li">
-                    {   /*editable &&
-                        <div className="wbutton-bar-li">
-                            { createNewButton(  handleCreate ) }
-                            { createDeleteButton( handleSelectToDelete ) }
-                        </div>*/
+                    {   
+                        <div className="button-bar-li">
+                            { createNewButton(  handleClickNewButton ) }
+                            { createDeleteButton( handleClickDeleteButton ) }
+                        </div>
                     }
                     <div id="base-li">
                         <table id="common-grid-li">                     
@@ -64,4 +78,24 @@ export default function ObjectListView ( props )  {
         </>      
     )
 
+}
+
+//return ButtonFactory( 'small', className, () => handler( handler, param ), iconName );
+
+function createDeleteButton( event, eventParam ) {
+
+    if( event )
+        return ButtonFactory( 'small', 'grid-button-remove', () => event( eventParam ), 'remove' );
+    else
+        return undefined;    
+        
+}
+
+function createNewButton( event, eventParam ) {
+
+    if( event )
+        return ButtonFactory( 'small', 'button-new', () => event( eventParam ), 'add' );
+    else
+        return undefined;    
+        
 }

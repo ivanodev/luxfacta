@@ -5,6 +5,8 @@ import { ObjectPropertyType } from '../../infra/specview/SpecViewObjectProp';
 import ObjectUtils from '../../utils/ObjectUtils';
 import ObjectListView from '../ObjectListView';
 
+import './styles.scss';
+
 export default function ObjectView ( props ) {
 
     const { specViewLayout, dataObject } = props; 
@@ -138,10 +140,29 @@ export default function ObjectView ( props ) {
 
     }
 
+
     return (
 
-        <div>
-            { cmps }
+        <div className="layout">   
+            { specViewLayout.headerVisible &&            
+            <header className="layout-header" >
+                <label className="layout-header-title">{ title }</label> 
+                <hr/>
+            </header>    
+            }
+            <div
+                className="layout-content"
+                style={{
+                        display: 'grid', 
+                        gridTemplateColumns : templateColumns,                       
+                        gridColumnGap : '10px',
+                        gridRowGap: '20px',
+                        paddingLeft: '8px',
+                        paddingRight: '8px',
+                      }}
+            >                      
+            { cmps }                            
+            </div>
         </div>
 
     );

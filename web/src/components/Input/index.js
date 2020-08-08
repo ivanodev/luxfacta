@@ -1,6 +1,6 @@
 import React from 'react';
 
-//import './styles.scss';
+import './styles.scss';
 
 export default function Input( props ) {
 
@@ -42,7 +42,7 @@ export default function Input( props ) {
     return (
 
        <div className="input-content">
-            <label >{spec.label}</label>
+            <label>{spec.label}</label>
             <input 
                 className="input"               
                 name={spec.name}                

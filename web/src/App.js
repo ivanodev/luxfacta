@@ -10,7 +10,7 @@ export default function App() {
 
 	return (
 		<div>
-			<MainHeader />
+		
 			<BrowserRouter>
 				<Routes />
 			</BrowserRouter>

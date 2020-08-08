@@ -89,7 +89,16 @@ export default function DataGrid ( props ) {
                     </td>
                 );   
 
-            } 
+            } else {
+
+                cols.push( 
+                    <td 
+                        key={`${i}`} >
+                        { value }
+                    </td>
+                ); 
+
+            }
             
         } 
 
@@ -114,11 +123,10 @@ export default function DataGrid ( props ) {
 
     return (
 
-        <div>
-          
-            <table>
+        <div className="data-grid" >
+            <table className="table-data-grid">
                 <thead>
-                    <tr>
+                    <tr className="header-data-grid">
                         { columnHeadingFactory() }
                         { actions && <th key="actions">Ações</th> }
                     </tr>

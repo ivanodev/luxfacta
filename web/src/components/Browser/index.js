@@ -4,6 +4,7 @@ import { get } from '../../service/api';
 import ObjectUtils from '../../utils/ObjectUtils';
 import { withRouter } from 'react-router-dom';
 
+
 function Browser( props ) {
 
     const { urn, keyProp, specView } = props;
@@ -112,14 +113,14 @@ function Browser( props ) {
     
    
     return (
-        <form>
+        <div className="browser">
             <DataGrid 
                 data={data}
                 keyProp={keyProp}
                 specColumns={specColumns.current}
                 actions={actions}
             />
-        </form>
+        </div>
     )
 
 }

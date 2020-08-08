@@ -9,7 +9,7 @@ function PollEdit ( props ) {
     layoutPoll.layoutType = LayoutType.DUPLE;
 
     let layoutOptions = new SpecViewLayout( SpecViewOptions );
-    layoutOptions.layoutType = LayoutType.SINGLE;
+    layoutOptions.layoutType = LayoutType.DUPLE;
 
     let layouts = [];
     layouts.push( layoutPoll );

@@ -67,8 +67,6 @@ function Edit( props ) {
 
                         const dataList = ObjectUtils.getPropertyValue( data, specDTV.path );
 
-                         console.log( ' list ', dataList )
-
                         views.push (
                             <ObjectListView
                                 key={i}

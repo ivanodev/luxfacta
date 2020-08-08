@@ -17,13 +17,17 @@ function PollBrowser( props ) {
 
 
     return (
-        <Browser
-            urn='poll' 
-            title='Enquete' 
-            keyProp={'poll_id'} 
-            specView={SpecViewPollBrowser}
-            customActions={customActions}
-        />
+        <form>
+            <div id="poll-browser" className="container" >
+                <Browser
+                    urn='poll' 
+                    title='Enquete' 
+                    keyProp={'poll_id'} 
+                    specView={SpecViewPollBrowser}
+                    customActions={customActions}
+                />
+            </div>
+        </form>
     );
 
 }

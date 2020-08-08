@@ -15,7 +15,7 @@ export class SpecViewObjectProperty extends SpecView {
         super( name, SpecViewType.PROPERTY );
         
         this.name = name;
-        this.label = label;
+        this.label = label ? label : name ;
         this.path = path;
         this.dataType = dataType;
         this.propertyType = propertyType;
