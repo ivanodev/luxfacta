@@ -3,6 +3,7 @@ import DataGrid from '../DataGrid';
 import { get } from '../../service/api';
 import ObjectUtils from '../../utils/ObjectUtils';
 import { withRouter } from 'react-router-dom';
+import { ButtonFactory } from '../Button';
 
 
 function Browser( props ) {
@@ -43,7 +44,7 @@ function Browser( props ) {
             { handler: handleClickDelete, className : "", iconName: "delete" }
         ];
 
-        if ( customActions ) {
+        if ( customActions.current ) {
 
             for ( let i = 0; i < customActions.current.length; i++) {
 
@@ -111,9 +112,40 @@ function Browser( props ) {
 
     }
     
+    const handleClickNew = event => {
+
+        props.history.push(`/${urn}/new`);
+
+    }
+
+    const createBtnAction = ( handler, className, iconName, param ) => {
+
+        if ( handler )
+            return ButtonFactory( 'normal', className, () => handler( handler, param ), iconName );
+        else
+            return undefined;
+    
+    }
+
+    
    
     return (
-        <div className="browser">
+        <div className="browser" >
+            <div className="common-header">
+                <label>
+                    Enquete
+                </label>
+            </div>
+            <div className="toolbar-container">
+                <div className="toolbar-buttons">
+                {
+                    createBtnAction( handleClickNew, '', 'add', null )
+                }
+                {
+                    createBtnAction( handleClickDelete, '', 'delete', null )
+                }
+                </div>
+            </div>
             <DataGrid 
                 data={data}
                 keyProp={keyProp}

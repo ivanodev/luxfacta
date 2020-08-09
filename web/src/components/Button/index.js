@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetImage16 } from '../../image/image16';
+import { GetImage24 } from '../../image/image24';
 
 
 export default function Button ( props ) {
@@ -18,41 +19,50 @@ export function ButtonFactory ( sizeType, className, onClick, iconName, title, b
 
     let element = null;
     let elementKey = Math.floor( Math.random() * 5000 );
+    let icon = null;
 
     if ( sizeType === 'small' ) {
 
-        if ( buttonType === 'submit' ) {
+        icon = GetImage16(iconName); 
 
-            element = ( 
-            
-                    <button 
-                        id={className}                         
-                        type={buttonType}
-                        title={title}
-                        key={elementKey}
-                    >                        
-                        <img src={GetImage16(iconName)} alt="" />                        
-                    </button>    
-                        
-            );
+    } else {
 
-        } else {
+        icon = GetImage24(iconName); 
 
-            element = ( 
+    }
+
+    if ( buttonType === 'submit' ) {
+
+        element = ( 
+        
                 <button 
-                    id={className} 
-                    type="button" 
-                    onClick={( event ) => executeHandle( onClick, event )}
+                    id={className}                         
+                    type={buttonType}
                     title={title}
                     key={elementKey}
-                >
-                    <img src={GetImage16(iconName)} alt=""/>
-                </button>
-            );  
+                >                        
+                    <img src={icon} alt="" />                        
+                </button>    
+                    
+        );
+
+    } else {
+
+        element = ( 
+            <button 
+                id={className} 
+                type="button" 
+                onClick={( event ) => executeHandle( onClick, event )}
+                title={title}
+                key={elementKey}
+            >
+                <img src={icon} alt=""/>
+            </button>
+        );  
 
 
-        }
     }
+    
 
     return element;
 

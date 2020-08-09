@@ -15,6 +15,7 @@ function PollBrowser( props ) {
         { handler: handleClick, className : "", iconName: "list" }
     ];
 
+  
 
     return (
         <form>
@@ -24,7 +25,7 @@ function PollBrowser( props ) {
                     title='Enquete' 
                     keyProp={'poll_id'} 
                     specView={SpecViewPollBrowser}
-                    customActions={customActions}
+                    //customActions={customActions}
                 />
             </div>
         </form>

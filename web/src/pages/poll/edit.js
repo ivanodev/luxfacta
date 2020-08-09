@@ -16,13 +16,14 @@ function PollEdit ( props ) {
     layouts.push( layoutOptions );
 
     return (
-
-        <Edit 
-            urn={'poll'}
-            keyProp={'poll_id'}  
-            layouts={layouts} 
-            layoutType={LayoutType.DUPLE}
-        />        
+        <div id="poll-edit" className="container" >
+            <Edit 
+                urn={'poll'}
+                keyProp={'poll_id'}  
+                layouts={layouts} 
+                layoutType={LayoutType.DUPLE}
+            />  
+        </div>      
     )
 
 }

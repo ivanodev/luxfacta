@@ -62,7 +62,7 @@ export default function DataGrid ( props ) {
                     </td>
                 );   
 
-            } else if (  specColumn.dataType === 'string' ) {
+            } else if ( specColumn.dataType === 'string' ) {
 
                 cols.push( 
                     <td 
@@ -121,14 +121,22 @@ export default function DataGrid ( props ) {
     
     }
 
+    const handleMouseMove = () => {
+
+    }
+
+    const handleMouseUp = () => {
+         
+    }
+
     return (
 
         <div className="data-grid" >
-            <table className="table-data-grid">
+            <table className="table-data-grid" nMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
                 <thead>
                     <tr className="header-data-grid">
                         { columnHeadingFactory() }
-                        { actions && <th key="actions">Ações</th> }
+                        { actions && <th key="actions" className="header-col-action-data-grid">Ações</th> }
                     </tr>
                 </thead>
                 <tbody>
@@ -136,12 +144,14 @@ export default function DataGrid ( props ) {
                     data.map( item => (
                         
                         <tr key={item[ keyProp ] }
+                            className="row-data-data-grid"
                             onClick={ ( e )=>handleRowClick( e, item )}
                         > 
                             { rowDataFactory( item ) } 
 
                             <td>
-                                <div>
+                             
+                                <div className="data-col-action-data-grid" >
                                     { actions &&
                                         actions.map( action => (
 
@@ -150,6 +160,7 @@ export default function DataGrid ( props ) {
                                         ))
                                     }
                                 </div>
+                                
                             </td>
 
                         </tr>             

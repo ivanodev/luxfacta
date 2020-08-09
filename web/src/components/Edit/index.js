@@ -6,6 +6,7 @@ import { SpecViewType } from '../../infra/specview/SpecView';
 import ObjecView from '../../components/ObjectView';
 import ObjectListView from '../ObjectListView';
 import ObjectUtils from '../../utils/ObjectUtils';
+import EntityInstance from '../../infra/entity/EntityInstance';
 
 function Edit( props ) {
 
@@ -18,11 +19,21 @@ function Edit( props ) {
 
         const fetch = async () => {
 
-            const response = await get( `${urn}/${id}`);
+            let response = null;
 
-            if ( response ) {
+            if ( id ) {
 
-                setData( response.data );
+                response = await get( `${urn}/${id}`);
+
+                if ( response ) {
+
+                    setData( response.data );
+
+                }
+
+            } else {
+
+                setData( EntityInstance.newInstance( urn ) );
 
             }
 
@@ -94,10 +105,11 @@ function Edit( props ) {
     const views = mountView();
 
     return (
-
-        <div>
-            { views }
-        </div>
+        <form>
+            <div className="edit">
+                { views }
+            </div>
+        </form>
 
     )
 
