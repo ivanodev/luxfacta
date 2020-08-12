@@ -19,12 +19,13 @@ export default function ObjectListView ( props )  {
 
     const handleClickNewButton = ( e ) => {
 
-       
-
-
     }
 
     const handleClickDeleteButton = ( e ) => {
+
+    }
+
+    const handleClickRefreshButton = ( e ) => {
 
     }
 
@@ -66,12 +67,7 @@ export default function ObjectListView ( props )  {
                             </tbody>   
                         </table>
                     </div>   
-                    <div id="view-object-li" > 
-                        <ObjectView
-                            specViewLayout={specViewLayout} 
-                            dataObject={selectedItem}
-                        /> 
-                    </div>
+
                 </div>
 
             </div>

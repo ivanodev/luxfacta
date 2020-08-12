@@ -17,7 +17,6 @@ export default function ObjectView ( props ) {
             `The Edit visualization component waits to receive an instance of the SpecViewLayout class and received ${specViewLayout}` );
     } 
 
-
     let title = specViewLayout.title;    
     let templateColumns = '';
 
@@ -145,10 +144,10 @@ export default function ObjectView ( props ) {
 
         <div className="layout">   
             { specViewLayout.headerVisible &&            
-            <header className="layout-header" >
-                <label className="layout-header-title">{ title }</label> 
-                <hr/>
-            </header>    
+                <header className="layout-header" >
+                    <label className="layout-header-title">{ title }</label> 
+                    <hr/>
+                </header>    
             }
             <div
                 className="layout-content"

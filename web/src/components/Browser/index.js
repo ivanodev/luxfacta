@@ -127,6 +127,15 @@ function Browser( props ) {
     
     }
 
+    const handleClickRefresh = ( handler, className, iconName, param ) => {
+
+        if ( handler )
+            return ButtonFactory( 'normal', className, () => handler( handler, param ), iconName );
+        else
+            return undefined;
+    
+    }
+
     
    
     return (
@@ -143,6 +152,9 @@ function Browser( props ) {
                 }
                 {
                     createBtnAction( handleClickDelete, '', 'delete', null )
+                }
+                {
+                    createBtnAction( handleClickRefresh, '', 'refresh', null )
                 }
                 </div>
             </div>

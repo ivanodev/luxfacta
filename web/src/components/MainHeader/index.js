@@ -8,7 +8,7 @@ export default function MainHeader ( props ) {
         <header id="main-header">
         
             <div className="main-menu-logo-app">
-                <span>POLL</span>
+                <strong>Enquete LuxFacta</strong>
             </div>
                 
             <div className="user-logged">
