@@ -3,8 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { ObjectView } from './styles';
 import { ObjectContent } from './styles';
 import { Layout } from './styles';
+import { LayoutTitle } from './styles';
+import { LayoutContent } from './styles';
 import { ObjectLayout } from './styles';
 import { Input } from './styles';
+import { ObjectEditor } from './styles';
+import { ObjectEditorHeader } from './styles';
 
 function EditObject( props ) {
 
@@ -38,45 +42,80 @@ function EditObject( props ) {
     }, []);
 
     return (
-                <ObjectView id="edit-object">
-                    <ObjectContent>
-                        <Layout columns={2} color="red" >
-                            <ObjectLayout columns={2} color="yellow" >  
-                                { data && 
-                                    <>
-                                        <Input
-                                            value={data.person.fullName}
-                                        />
-                                        <Input
-                                            value={data.person.federalDoc}
-                                        />
-                                        <Input 
-                                            value={data.person.stateDoc}
-                                        />
-                                    </>
-                                }
-                            </ObjectLayout>
-                            <ObjectLayout columns={1} color="green" >   
-                                <Input>
-                                </Input>
-                                <Input>
-                                </Input>
-                                <Input>
-                                </Input>
-                            </ObjectLayout>
-                        </Layout>
-                        <Layout columns={1} color="red" >
-                            <ObjectLayout columns={2} color="green" >   
-                                <Input>
-                                </Input>
-                                <Input>
-                                </Input>
-                                <Input>
-                                </Input>
-                            </ObjectLayout>
-                        </Layout>
-                    </ObjectContent>
-                </ObjectView>
+            <ObjectEditor>
+                <ObjectEditorHeader>
+                    <label>
+                        Cliente
+                    </label>
+                </ObjectEditorHeader>
+                    <ObjectView>
+                        <ObjectContent>
+                                <LayoutContent columns={2} color="red" >
+                                    <Layout>
+                                        <LayoutTitle>
+                                            <label>Dados Pessoais</label>
+                                            <hr/>
+                                        </LayoutTitle>
+                                        <ObjectLayout columns={1} color="white" >  
+                                            { data && 
+                                                <>
+                                                    <Input
+                                                        value={data.person.fullName}
+                                                    />
+                                                    <Input
+                                                        value={data.person.federalDoc}
+                                                    />
+                                                    <Input 
+                                                        value={data.person.stateDoc}
+                                                    />
+                                                </>
+                                            }
+                                        </ObjectLayout>
+                                    </Layout>
+                                    <Layout>
+                                        <LayoutTitle>
+                                            <label>Dados</label>
+                                            <hr/>
+                                        </LayoutTitle>
+                                        <ObjectLayout columns={1} color="white" >   
+                                            <>
+                                            <Input>
+                                            </Input>
+                                            <Input>
+                                            </Input>
+                                            <Input>
+                                            </Input>
+                                            <Input>
+                                            </Input>
+                                            <Input>
+                                            </Input>
+                                            <Input>
+                                            </Input>
+                                            </>
+                                        </ObjectLayout>
+                                    </Layout>
+                                </LayoutContent>
+                          
+                                <LayoutContent columns={1} color="red" >
+                                    <Layout>
+                                        <LayoutTitle>
+                                            <label>Dados Pessoais</label>
+                                            <hr/>
+                                        </LayoutTitle>
+                                        <ObjectLayout columns={2} color="white" >   
+                                            <Input>
+                                            </Input>
+                                            <Input>
+                                            </Input>
+                                            <Input>
+                                            </Input>
+                                        </ObjectLayout>
+                                    </Layout>
+                                </LayoutContent>
+                           
+                        </ObjectContent>
+                    </ObjectView>
+            </ObjectEditor>
     )
 
 
