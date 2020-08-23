@@ -7,7 +7,6 @@ export const ObjectEditor = styled.div`
 `;
 
 export const ObjectEditorHeader = styled.div`
-    
     width : 100%;
     height : 4rem;
 
@@ -37,10 +36,7 @@ export const ObjectView = styled.div`
 export const ObjectContent = styled.div`
     width: 100%;
     height: 100%;
-
     background-color : #fff;
-    border: solid;
-    
 `; 
 
 export const Layout = styled.div`
@@ -52,8 +48,7 @@ export const Layout = styled.div`
     justify-content : flex-start;
     align-items : flex-start;
 
-    padding : 0.8rem;
-    
+    padding : 0.4rem;
 `;
 
 //${ props => `${props.color}` };
@@ -65,17 +60,13 @@ export const LayoutContent = styled.div`
     display : grid;
     grid-template-columns : repeat( ${props => `${ props.columns }` }, 1fr );
   
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
 
-    grid-column-gap : 2rem;
-    grid-row-gap : 2rem;
-
-    background-color : green;
-
-    
+    grid-column-gap : 0.5rem;
+    grid-row-gap : 0.5rem;
 `; 
 
 export const LayoutTitle = styled.header`
@@ -125,7 +116,6 @@ export const ObjectLayout = styled.div`
 
     grid-auto-rows: 6rem;
     grid-column-gap: 1rem;
-   
 `; 
 
 export const Input = styled.div`

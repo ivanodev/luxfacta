@@ -96,20 +96,37 @@ function EditObject( props ) {
                                     <hr/>
                                 </LayoutTitle>
                                 <ObjectLayout columns={1}>   
-                                    <>
-                                    <InputData>
-                                    </InputData>
-                                    <InputData>
-                                    </InputData>
-                                    <InputData>
-                                    </InputData>
-                                    <InputData>
-                                    </InputData>
-                                    <InputData>
-                                    </InputData>
-                                    <InputData>
-                                    </InputData>
-                                    </>
+                                { data && 
+                                        <>  
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.fullName">
+                                                    Razão Social
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.fullName"
+                                                    value={data.person.fullName}
+                                                />
+                                            </Input>
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.federalDoc" >
+                                                    CNPJ
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.federalDoc"
+                                                    value={data.person.federalDoc}
+                                                />
+                                            </Input>
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.stateDoc">
+                                                    RG
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.stateDoc"
+                                                    value={data.person.stateDoc}
+                                                />
+                                            </Input>
+                                        </>
+                                    }
                                 </ObjectLayout>
                             </Layout>
                         </LayoutContent>
@@ -121,12 +138,37 @@ function EditObject( props ) {
                                     <hr/>
                                 </LayoutTitle>
                                 <ObjectLayout columns={2} color="white" >   
-                                    <Input>
-                                    </Input>
-                                    <Input>
-                                    </Input>
-                                    <Input>
-                                    </Input>
+                                { data && 
+                                        <>  
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.fullName">
+                                                    Razão Social
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.fullName"
+                                                    value={data.person.fullName}
+                                                />
+                                            </Input>
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.federalDoc" >
+                                                    CNPJ
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.federalDoc"
+                                                    value={data.person.federalDoc}
+                                                />
+                                            </Input>
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.stateDoc">
+                                                    RG
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.stateDoc"
+                                                    value={data.person.stateDoc}
+                                                />
+                                            </Input>
+                                        </>
+                                    }
                                 </ObjectLayout>
                             </Layout>
                         </LayoutContent>   
