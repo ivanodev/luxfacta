@@ -47,6 +47,7 @@ export const ToolBarButtons = styled.div `
     justify-content: start;
     
     button {
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -58,13 +59,14 @@ export const ToolBarButtons = styled.div `
         background-color: transparent;
         opacity: 1;
         transition: background-color 15ms; 
-        height: 3.5rem;
-        width: 3.5rem;
+        height: 3.3rem;
+        width: 3.3rem;
         cursor: pointer;
 
         :hover {
             background-color: #f2f2f2;
         }
+
     }
 `
 
@@ -97,8 +99,6 @@ export const ObjectContent = styled.div`
     height: 100%;
     background-color : #fff;
     border-radius : 0.8rem;
-    border-color:var(--color-line-in-white);
-    border-radius:2rem;
 `; 
 
 export const Layout = styled.div`

@@ -14,16 +14,18 @@ import { ToolBarContainer, ToolBarButtons } from './styles';
 import saveIcon from '../../image/24/save.png';
 import backIcon from '../../image/24/back.png';
 import { ButtonFactory } from '../../components/Button';
+import { findObjectIndex } from '../../utils/ArrayUtils';
+import ObjectUtils from '../../utils/ObjectUtils';
 
 function EditObject( props ) {
 
-    const [ data, setData ] = useState(null);
+    const [ dataObject, setDataObject ] = useState(null);
 
     useEffect( () => {
 
         const fecth = async () => {
 
-            setData({
+            setDataObject({
                 _id  : 0,
                 actorType : ['company', 'customer', 'supplier', 'user'],
                 person : {
@@ -58,9 +60,38 @@ function EditObject( props ) {
 
     }
 
-    const updateState = () => {
+    /**
+     * Updates the state of the object being used in the component.
+     * @param {*} e - HTML DOM Events
+     * @param {*} currentObject - Current object that has changed
+     */
 
 
+
+    const updateState = ( e, currentObject ) => {
+
+        try {
+
+            const value = normalizeValue( e.target );
+            const path = e.target.id;
+
+            let newDataObject = Object.assign( {}, currentObject );
+
+            ObjectUtils.setPropertyValue( newDataObject, e.target.id, value );
+
+            setDataObject( newDataObject );
+
+        } catch ( err ) {
+
+            throw err;
+
+        }
+
+    }
+
+    const handleChange = ( e ) => {
+
+        updateState( e, dataObject );
 
     }
 
@@ -90,7 +121,7 @@ function EditObject( props ) {
                                     <hr/>
                                 </LayoutTitle>
                                 <ObjectLayout columns={2}>  
-                                    { data && 
+                                    { dataObject && 
                                         <>  
                                             <Input>
                                                 <InputLabel htmlFor="actor.person.fullName">
@@ -98,7 +129,8 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.fullName"
-                                                    value={data.person.fullName}
+                                                    value={dataObject.person.fullName}
+                                                    onChange={(e)=>handleChange(e)}
                                                 />
                                             </Input>
                                             <Input>
@@ -107,7 +139,7 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.federalDoc"
-                                                    value={data.person.federalDoc}
+                                                    value={dataObject.person.federalDoc}
                                                 />
                                             </Input>
                                             <Input>
@@ -116,7 +148,7 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.stateDoc"
-                                                    value={data.person.stateDoc}
+                                                    value={dataObject.person.stateDoc}
                                                 />
                                             </Input>
                                         </>
@@ -129,7 +161,7 @@ function EditObject( props ) {
                                     <hr/>
                                 </LayoutTitle>
                                 <ObjectLayout columns={1}>   
-                                { data && 
+                                { dataObject && 
                                         <>  
                                             <Input>
                                                 <InputLabel htmlFor="actor.person.fullName">
@@ -137,7 +169,7 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.fullName"
-                                                    value={data.person.fullName}
+                                                    value={dataObject.person.fullName}
                                                 />
                                             </Input>
                                             <Input>
@@ -146,7 +178,7 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.federalDoc"
-                                                    value={data.person.federalDoc}
+                                                    value={dataObject.person.federalDoc}
                                                 />
                                             </Input>
                                             <Input>
@@ -155,7 +187,7 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.stateDoc"
-                                                    value={data.person.stateDoc}
+                                                    value={dataObject.person.stateDoc}
                                                 />
                                             </Input>
                                         </>
@@ -171,7 +203,7 @@ function EditObject( props ) {
                                     <hr/>
                                 </LayoutTitle>
                                 <ObjectLayout columns={2} color="white" >   
-                                { data && 
+                                { dataObject && 
                                         <>  
                                             <Input>
                                                 <InputLabel htmlFor="actor.person.fullName">
@@ -179,7 +211,7 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.fullName"
-                                                    value={data.person.fullName}
+                                                    value={dataObject.person.fullName}
                                                 />
                                             </Input>
                                             <Input>
@@ -188,7 +220,7 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.federalDoc"
-                                                    value={data.person.federalDoc}
+                                                    value={dataObject.person.federalDoc}
                                                 />
                                             </Input>
                                             <Input>
@@ -197,7 +229,7 @@ function EditObject( props ) {
                                                 </InputLabel>
                                                 <InputData
                                                     id="actor.person.stateDoc"
-                                                    value={data.person.stateDoc}
+                                                    value={dataObject.person.stateDoc}
                                                 />
                                             </Input>
                                         </>
@@ -223,5 +255,54 @@ const createBtnAction = ( handler, className, iconName, param ) => {
         return ButtonFactory( 'normal', className, () => handler( handler, param ), iconName );
     else
         return undefined;
+
+}
+
+const normalizeValue = ( field ) => {
+
+    var value = null;
+   
+    switch ( field.type ) {
+
+        case 'number':
+
+            value = field.value;
+
+            if ( Number.isInteger( value ) ) {
+
+                value = parseInt( value, 0 );
+
+            } else {
+
+                value = parseFloat( value );
+
+            }
+
+            break;
+
+        case 'checkbox':
+            value = field.checked;
+            break;
+        default:
+            value = field.value;
+            break;
+
+    }
+
+    return value;
+
+}
+
+const getPaths = ( field ) => {
+
+    const id = field.id;
+
+    if ( id.length === 0 ) {
+        throw new Error( 
+            'HTML element without id. It will not be possible to update the state of this property. ' 
+        );
+    }
+
+    return id.split( '.' ); 
 
 }

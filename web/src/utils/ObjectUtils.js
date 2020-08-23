@@ -146,14 +146,18 @@ export default class ObjectUtils {
                 let name = '';
                 let proName = props[ props.length - 1];
     
-                for ( let i = 0; i <= props.length - 1; i++ ) { 
+                for ( let i = 1; i < props.length-1; i++ ) { 
     
                     name = props[ i ];
                     value = value[ name ];
 
                     if ( !value ) return undefined;
 
-                    if ( value && Array.isArray( value ) === true ) {
+                    if ( typeof value  === 'object' ) {
+
+                        return this.setPropertyValue( value, proName, propValue ); 
+                        
+                    } else if ( Array.isArray( value ) === true ) {
 
                         for ( let j = 0; j <= value.length -1; i++ ) {
 
