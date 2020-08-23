@@ -17,10 +17,68 @@ export const ObjectEditorHeader = styled.div`
     background-color: #06aeaa; 
 
     label {
-        font : 700 2rem poppins;
+        font : 500 2rem poppins;
         margin-right : 1rem;
+        color : #fff;
     }
+
+    border-top-right-radius: 0.8rem;
+    border-top-left-radius: 0.8rem;
 `;
+
+export const ToolBarContainer = styled.div `
+    width : 100%;
+    height : 4rem;
+    background-color : #fff;
+
+    padding-left : 0.8rem;
+    padding-right : 0.8rem;
+
+    border-top: solid 0.1rem;
+    border-bottom: solid 0.1rem;
+    border-color:var(--color-line-in-white);
+`
+
+export const ToolBarButtons = styled.div `
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-color:var(--color-line-in-white);
+        border-radius:2rem;
+        border-style: solid;
+        border-width: 0;
+        box-shadow: 0;
+        background-color: transparent;
+        opacity: 1;
+        transition: background-color 15ms; 
+        height: 3.5rem;
+        width: 3.5rem;
+        cursor: pointer;
+
+        :hover {
+            background-color: #f2f2f2;
+        }
+    }
+`
+
+/*
+ img {
+   
+            -moz-transform: scale(0.90);
+            -webkit-transform: scale(0.90);
+            transform: scale(0.90); 
+
+            border-radius:2rem;
+
+        } 
+*/
 
 export const ObjectView = styled.div`
     width : 100vw;
@@ -31,12 +89,16 @@ export const ObjectView = styled.div`
     justify-content : center;
 
     padding : 1rem;
+    
 `;
 
 export const ObjectContent = styled.div`
     width: 100%;
     height: 100%;
     background-color : #fff;
+    border-radius : 0.8rem;
+    border-color:var(--color-line-in-white);
+    border-radius:2rem;
 `; 
 
 export const Layout = styled.div`

@@ -9,6 +9,11 @@ import { ObjectLayout } from './styles';
 import { Input, InputData, InputLabel } from './styles';
 import { ObjectEditor } from './styles';
 import { ObjectEditorHeader } from './styles';
+import { ToolBarContainer, ToolBarButtons } from './styles';
+
+import saveIcon from '../../image/24/save.png';
+import backIcon from '../../image/24/back.png';
+import { ButtonFactory } from '../../components/Button';
 
 function EditObject( props ) {
 
@@ -41,6 +46,24 @@ function EditObject( props ) {
 
     }, []);
 
+    const handleClickNew = event => {
+
+       
+
+    }
+
+    const handleClickRefresh = event => {
+
+       
+
+    }
+
+    const updateState = () => {
+
+
+
+    }
+
     return (
             <ObjectEditor>
                 <ObjectEditorHeader>
@@ -48,6 +71,16 @@ function EditObject( props ) {
                         Cliente
                     </label>
                 </ObjectEditorHeader>
+                <ToolBarContainer>
+                    <ToolBarButtons>                    
+                    {
+                        createBtnAction( handleClickNew, '', 'arrow-back', null )
+                    }               
+                    {
+                        createBtnAction( handleClickRefresh, '', 'save', null )
+                    }
+                    </ToolBarButtons>
+                </ToolBarContainer>
                 <ObjectView>
                     <ObjectContent>
                         <LayoutContent columns={2}>
@@ -182,3 +215,13 @@ function EditObject( props ) {
 }
 
 export default EditObject;
+
+
+const createBtnAction = ( handler, className, iconName, param ) => {
+
+    if ( handler )
+        return ButtonFactory( 'normal', className, () => handler( handler, param ), iconName );
+    else
+        return undefined;
+
+}
