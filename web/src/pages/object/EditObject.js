@@ -37,7 +37,13 @@ function EditObject( props ) {
                        residencial : '33334444',
                        celular: '',
                        comercial : ''     
-                    }
+                    },
+                    addresses : [
+                        { address : 'Rua Monsenhor Januario' },
+                        { address : 'Rua Monsenhor Januario' },
+                        { address : 'Rua Firminopolis 1002' },
+                        { address : 'Rua Monsenhor Januario' }
+                    ]
                 }
 
             });
@@ -140,8 +146,8 @@ function EditObject( props ) {
                                                     CNPJ
                                                 </InputLabel>
                                                 <InputData
-                                                    id="actor.person.phone.residencial"
-                                                    value={dataObject.person.phone.residencial}
+                                                    id="actor.person.addresses.address"
+                                                    value={dataObject.person.addresses[3].address}
                                                     onChange={(e)=>handleChange(e)}
                                                 />
                                             </Input>

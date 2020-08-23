@@ -144,8 +144,49 @@ export default class ObjectUtils {
             if ( props.length > 1 ) {
                 
                 let name = '';
-                let proName = props[ props.length - 1];
+                //let proName = props[ props.length - 1 ];
+
+                for ( let i = 1; i < props.length; i++ ) {
+
+                    name = props[ i ];
+                    value =  value[ name ];
+
+                    if ( !value ) return undefined;
+
+                    if ( typeof value === 'object' ) {
+
+                        const newProps = props.slice( i+1, props.length );
+                        let newPath = newProps.toString();
+                        newPath = newPath.replace( ',', '.' );
+
+                        this.setPropertyValue( value, newPath, propValue ); 
+
+                    } else if ( Array.isArray( value ) === true ) {
+
+                        console.log( value );
+
+                        for ( let j = 0; j <= value.length -1; i++ ) {
+
+                            const obj = value[0];
+                            return this.setPropertyValue( obj, name, propValue );
+
+                        }
+                        
+                    }  
+
+                    /*
+
+                    if ( path === '' )
+                        path = path + '.' + name;
+                    else    
+                        path = name; */
+
+                }
+
+                //if ( value )
+                //    value[name] = propValue;
     
+                /*
                 for ( let i = 1; i < props.length-1; i++ ) { 
     
                     name = props[ i ];
@@ -155,10 +196,8 @@ export default class ObjectUtils {
 
                     if ( typeof value  === 'object' ) {
 
-                        console.log( 'aqui', value, proName );
                         return this.setPropertyValue( value, proName, propValue ); 
 
-                        
                     } else if ( Array.isArray( value ) === true ) {
 
                         for ( let j = 0; j <= value.length -1; i++ ) {
@@ -178,9 +217,13 @@ export default class ObjectUtils {
                 }   
 
                 if ( value )
-                    value[name] = propValue;
+                    value[name] = propValue; 
+
+                */
     
             } else {
+
+                //console.log( 'else', object, propValue );
 
                 object[ path ] = propValue; 
                 
