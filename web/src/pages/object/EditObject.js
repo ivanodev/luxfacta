@@ -6,7 +6,7 @@ import { Layout } from './styles';
 import { LayoutTitle } from './styles';
 import { LayoutContent } from './styles';
 import { ObjectLayout } from './styles';
-import { Input } from './styles';
+import { Input, InputData, InputLabel } from './styles';
 import { ObjectEditor } from './styles';
 import { ObjectEditorHeader } from './styles';
 
@@ -48,73 +48,90 @@ function EditObject( props ) {
                         Cliente
                     </label>
                 </ObjectEditorHeader>
-                    <ObjectView>
-                        <ObjectContent>
-                                <LayoutContent columns={2} color="red" >
-                                    <Layout>
-                                        <LayoutTitle>
-                                            <label>Dados Pessoais</label>
-                                            <hr/>
-                                        </LayoutTitle>
-                                        <ObjectLayout columns={1} color="white" >  
-                                            { data && 
-                                                <>
-                                                    <Input
-                                                        value={data.person.fullName}
-                                                    />
-                                                    <Input
-                                                        value={data.person.federalDoc}
-                                                    />
-                                                    <Input 
-                                                        value={data.person.stateDoc}
-                                                    />
-                                                </>
-                                            }
-                                        </ObjectLayout>
-                                    </Layout>
-                                    <Layout>
-                                        <LayoutTitle>
-                                            <label>Dados</label>
-                                            <hr/>
-                                        </LayoutTitle>
-                                        <ObjectLayout columns={1} color="white" >   
-                                            <>
+                <ObjectView>
+                    <ObjectContent>
+                        <LayoutContent columns={2}>
+                            <Layout>
+                                <LayoutTitle>
+                                    <label>Dados Pessoais</label>
+                                    <hr/>
+                                </LayoutTitle>
+                                <ObjectLayout columns={2}>  
+                                    { data && 
+                                        <>  
                                             <Input>
+                                                <InputLabel htmlFor="actor.person.fullName">
+                                                    Razão Social
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.fullName"
+                                                    value={data.person.fullName}
+                                                />
                                             </Input>
                                             <Input>
+                                                <InputLabel htmlFor="actor.person.federalDoc" >
+                                                    CNPJ
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.federalDoc"
+                                                    value={data.person.federalDoc}
+                                                />
                                             </Input>
                                             <Input>
+                                                <InputLabel htmlFor="actor.person.stateDoc">
+                                                    RG
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.stateDoc"
+                                                    value={data.person.stateDoc}
+                                                />
                                             </Input>
-                                            <Input>
-                                            </Input>
-                                            <Input>
-                                            </Input>
-                                            <Input>
-                                            </Input>
-                                            </>
-                                        </ObjectLayout>
-                                    </Layout>
-                                </LayoutContent>
-                          
-                                <LayoutContent columns={1} color="red" >
-                                    <Layout>
-                                        <LayoutTitle>
-                                            <label>Dados Pessoais</label>
-                                            <hr/>
-                                        </LayoutTitle>
-                                        <ObjectLayout columns={2} color="white" >   
-                                            <Input>
-                                            </Input>
-                                            <Input>
-                                            </Input>
-                                            <Input>
-                                            </Input>
-                                        </ObjectLayout>
-                                    </Layout>
-                                </LayoutContent>
-                           
-                        </ObjectContent>
-                    </ObjectView>
+                                        </>
+                                    }
+                                </ObjectLayout>
+                            </Layout>
+                            <Layout>
+                                <LayoutTitle>
+                                    <label>Dados</label>
+                                    <hr/>
+                                </LayoutTitle>
+                                <ObjectLayout columns={1}>   
+                                    <>
+                                    <InputData>
+                                    </InputData>
+                                    <InputData>
+                                    </InputData>
+                                    <InputData>
+                                    </InputData>
+                                    <InputData>
+                                    </InputData>
+                                    <InputData>
+                                    </InputData>
+                                    <InputData>
+                                    </InputData>
+                                    </>
+                                </ObjectLayout>
+                            </Layout>
+                        </LayoutContent>
+                    
+                        <LayoutContent columns={1} >
+                            <Layout>
+                                <LayoutTitle>
+                                    <label>Dados Pessoais</label>
+                                    <hr/>
+                                </LayoutTitle>
+                                <ObjectLayout columns={2} color="white" >   
+                                    <Input>
+                                    </Input>
+                                    <Input>
+                                    </Input>
+                                    <Input>
+                                    </Input>
+                                </ObjectLayout>
+                            </Layout>
+                        </LayoutContent>   
+                    </ObjectContent>
+                </ObjectView>
             </ObjectEditor>
     )
 
