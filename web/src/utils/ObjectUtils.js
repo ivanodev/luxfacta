@@ -155,7 +155,9 @@ export default class ObjectUtils {
 
                     if ( typeof value  === 'object' ) {
 
+                        console.log( 'aqui', value, proName );
                         return this.setPropertyValue( value, proName, propValue ); 
+
                         
                     } else if ( Array.isArray( value ) === true ) {
 

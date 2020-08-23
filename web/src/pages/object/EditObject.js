@@ -34,7 +34,7 @@ function EditObject( props ) {
                     stateDoc: '3013167604',
                     cityDoc: '',
                     phone : {
-                       residencial : '',
+                       residencial : '33334444',
                        celular: '',
                        comercial : ''     
                     }
@@ -76,6 +76,8 @@ function EditObject( props ) {
             const path = e.target.id;
 
             let newDataObject = Object.assign( {}, currentObject );
+
+            console.log( e.target.id, value );
 
             ObjectUtils.setPropertyValue( newDataObject, e.target.id, value );
 
@@ -134,12 +136,13 @@ function EditObject( props ) {
                                                 />
                                             </Input>
                                             <Input>
-                                                <InputLabel htmlFor="actor.person.federalDoc" >
+                                                <InputLabel htmlFor="actor.person.phone.residencial" >
                                                     CNPJ
                                                 </InputLabel>
                                                 <InputData
-                                                    id="actor.person.federalDoc"
-                                                    value={dataObject.person.federalDoc}
+                                                    id="actor.person.phone.residencial"
+                                                    value={dataObject.person.phone.residencial}
+                                                    onChange={(e)=>handleChange(e)}
                                                 />
                                             </Input>
                                             <Input>
