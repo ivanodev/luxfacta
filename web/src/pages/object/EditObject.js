@@ -10,6 +10,7 @@ import { Input, InputData, InputLabel } from './styles';
 import { ObjectEditor } from './styles';
 import { ObjectEditorHeader } from './styles';
 import { ToolBarContainer, ToolBarButtons } from './styles';
+import { ObjectList, ObjectListMain, ObjectListDetail, ObjectListToolBar, ObjectListContent } from './styles';
 
 import saveIcon from '../../image/24/save.png';
 import backIcon from '../../image/24/back.png';
@@ -54,15 +55,15 @@ function EditObject( props ) {
 
     }, []);
 
-    const handleClickNew = event => {
+    const handleClickBack = event => {
 
        
 
     }
 
-    const handleClickRefresh = event => {
+    const handleClickSave = event => {
 
-       
+       console.log( dataObject );
 
     }
 
@@ -82,8 +83,6 @@ function EditObject( props ) {
             const path = e.target.id;
 
             let newDataObject = Object.assign( {}, currentObject );
-
-            console.log( e.target.id, value );
 
             ObjectUtils.setPropertyValue( newDataObject, e.target.id, value );
 
@@ -113,10 +112,10 @@ function EditObject( props ) {
                 <ToolBarContainer>
                     <ToolBarButtons>                    
                     {
-                        createBtnAction( handleClickNew, '', 'arrow-back', null )
+                        createBtnAction( handleClickBack, '', 'arrow-back', null )
                     }               
                     {
-                        createBtnAction( handleClickRefresh, '', 'save', null )
+                        createBtnAction( handleClickSave, '', 'save', null )
                     }
                     </ToolBarButtons>
                 </ToolBarContainer>
@@ -146,9 +145,9 @@ function EditObject( props ) {
                                                     CNPJ
                                                 </InputLabel>
                                                 <InputData
-                                                    id="actor.person.addresses.address"
-                                                    value={dataObject.person.addresses[3].address}
-                                                    onChange={(e)=>handleChange(e)}
+                                                    id="actor.person.federalDoc"
+                                                    value={dataObject.person.federalDoc}
+                                                    onChange={(e)=>handleChange(e )}
                                                 />
                                             </Input>
                                             <Input>
@@ -244,6 +243,31 @@ function EditObject( props ) {
                                         </>
                                     }
                                 </ObjectLayout>
+                            </Layout>
+                            <Layout>
+                                <LayoutTitle>
+                                    <label>Endereços</label>
+                                    <hr/>
+                                </LayoutTitle>
+                                <ObjectLayout columns={1} color="white" > 
+                                    { dataObject &&
+                                        <>
+                                            <ObjectList>
+                                                <ObjectListToolBar>
+                                                </ObjectListToolBar>
+                                                <ObjectListContent>
+                                                    <ObjectListMain>
+
+                                                    </ObjectListMain>
+                                                    <ObjectListDetail>
+
+                                                    </ObjectListDetail>
+                                                </ObjectListContent>
+                                            </ObjectList>
+                                        </>
+                                    }
+                                </ObjectLayout>
+
                             </Layout>
                         </LayoutContent>   
                     </ObjectContent>

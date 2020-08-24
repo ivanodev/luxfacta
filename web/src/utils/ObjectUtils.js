@@ -153,7 +153,21 @@ export default class ObjectUtils {
 
                     if ( !value ) return undefined;
 
-                    if ( typeof value === 'object' ) {
+                    if ( Array.isArray( value ) === true ) {
+
+                        console.log( 'array',value, name );
+
+                        const index = parseInt( props[ i + 1 ] );
+
+                        let obj = value[ index ];
+
+                        const newProps = props.slice( i+2, props.length );
+                        let newPath = newProps.toString();
+                        newPath = newPath.replace( ',', '.' );
+
+                        return this.setPropertyValue( obj, newPath, propValue );
+                        
+                    }  else if ( typeof value === 'object' ) {
 
                         const newProps = props.slice( i+1, props.length );
                         let newPath = newProps.toString();
@@ -161,17 +175,6 @@ export default class ObjectUtils {
 
                         this.setPropertyValue( value, newPath, propValue ); 
 
-                    } else if ( Array.isArray( value ) === true ) {
-
-                        console.log( value );
-
-                        for ( let j = 0; j <= value.length -1; i++ ) {
-
-                            const obj = value[0];
-                            return this.setPropertyValue( obj, name, propValue );
-
-                        }
-                        
                     }  
 
                     /*

@@ -226,3 +226,41 @@ export const InputData = styled.input`
         border-width: 1.5px;
     }
 `; 
+
+export const ObjectList = styled.div`
+    width : 100%;
+    height: auto;
+    background-color: green;
+    border-top-left-radius : 0.8rem;
+    border-top-right-radius : 0.8rem;
+
+`;
+export const ObjectListToolBar = styled.div`
+    width : 100%;
+    height: 3.5rem;
+    background-color: yellow;
+
+    border-top-left-radius : 0.8rem;
+    border-top-right-radius : 0.8rem;
+
+`;
+
+export const ObjectListContent = styled.div`
+    width: 100%;
+    height: 100%;
+    display : grid;
+    grid-template-columns : 20% 80%;
+
+`;
+
+export const ObjectListMain = styled.div` 
+    width : 100%;
+    height: 100%;
+    background-color: red;
+`;
+
+export const ObjectListDetail = styled.div`
+    width : 100%;
+    height: 100%;
+    background-color : blue;
+`;
