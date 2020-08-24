@@ -17,6 +17,7 @@ import backIcon from '../../image/24/back.png';
 import { ButtonFactory } from '../../components/Button';
 import { findObjectIndex } from '../../utils/ArrayUtils';
 import ObjectUtils from '../../utils/ObjectUtils';
+import DataGrid from '../../components/DataGrid';
 
 function EditObject( props ) {
 
@@ -40,10 +41,10 @@ function EditObject( props ) {
                        comercial : ''     
                     },
                     addresses : [
-                        { address : 'Rua Monsenhor Januario' },
-                        { address : 'Rua Monsenhor Januario' },
-                        { address : 'Rua Firminopolis 1002' },
-                        { address : 'Rua Monsenhor Januario' }
+                        { id: 0, address : 'Rua Monsenhor Januario', number : "36" },
+                        { id: 1, address : 'Rua Alfredo Pujol', number : "17"},
+                        { id: 2, address : 'Rua Firminopolis',  number : "12"},
+                        { id: 3, address : 'Rua Naninãna', number : "45" }
                     ]
                 }
 
@@ -257,10 +258,46 @@ function EditObject( props ) {
                                                 </ObjectListToolBar>
                                                 <ObjectListContent>
                                                     <ObjectListMain>
-
+                                                        <DataGrid 
+                                                            data={dataObject.person.addresses}
+                                                            keyProp={'id'}
+                                                            specColumns={[{
+                                                                    name: "address", 
+                                                                    title: "Descrição",
+                                                                    dataType: "string",
+                                                                    idData: "",
+                                                                    idTitle: "" 
+                                                            }]}
+                                                            //actions={actions}
+                                                        />
                                                     </ObjectListMain>
                                                     <ObjectListDetail>
-
+                                                    <Layout>
+                                                        <ObjectLayout columns={2} color="white" >   
+                                                        { dataObject && 
+                                                                <>  
+                                                                    <Input>
+                                                                        <InputLabel htmlFor="address.address">
+                                                                            Rua
+                                                                        </InputLabel>
+                                                                        <InputData
+                                                                            id="address.address"
+                                                                            value={dataObject.person.addresses[0].address}
+                                                                        />
+                                                                    </Input>
+                                                                    <Input>
+                                                                        <InputLabel htmlFor="address.number" >
+                                                                            Number
+                                                                        </InputLabel>
+                                                                        <InputData
+                                                                            id="address.number"
+                                                                            value={dataObject.person.addresses[0].number}
+                                                                        />
+                                                                    </Input>                                                                    
+                                                                </>
+                                                            }
+                                                        </ObjectLayout>
+                                                    </Layout>
                                                     </ObjectListDetail>
                                                 </ObjectListContent>
                                             </ObjectList>

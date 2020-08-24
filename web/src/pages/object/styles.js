@@ -191,7 +191,11 @@ export const Input = styled.div`
 export const InputLabel = styled.label`
     width: 35%;
     height: 3.5rem;
-    color : #000;
+
+    color : #3c4043;
+    font-weight : 500;
+    font-size : 1.2rem;
+    text-shadow: #838383 0em 0em 0.1em;
 
     display: flex;
     align-items: center;
@@ -257,6 +261,19 @@ export const ObjectListMain = styled.div`
     width : 100%;
     height: 100%;
     background-color: red;
+
+    display : flex;
+    align-items : center;
+    justify-content : center;
+
+    padding : 0.4rem;
+
+    table {
+        width : 100%;
+        height : 100%;
+        background-color : aquamarine;
+    }
+
 `;
 
 export const ObjectListDetail = styled.div`
