@@ -45,14 +45,6 @@ function EditObject( props ) {
                         { id: 1, address : 'Rua Alfredo Pujol', number : "17"},
                         { id: 2, address : 'Rua Firminopolis',  number : "12"},
                         { id: 3, address : 'Rua Naninãna', number : "45" },
-                        { id: 3, address : 'Rua Naninãna', number : "45" },
-                        { id: 3, address : 'Rua Naninãna', number : "45" },
-                        { id: 3, address : 'Rua Naninãna', number : "45" },
-                        { id: 3, address : 'Rua Naninãna', number : "45" },
-                        { id: 3, address : 'Rua Naninãna', number : "45" },
-                        { id: 3, address : 'Rua Naninãna', number : "45" },
-                        
-
                     ]
                 }
 
@@ -111,6 +103,8 @@ function EditObject( props ) {
 
     }
 
+    // ObjectList
+
     const [ address, setAddress ] = useState(null);
     const [ index, setIndex ] = useState(0);
 
@@ -120,6 +114,42 @@ function EditObject( props ) {
         setIndex( params[ 1 ]);
 
     }
+
+    const addItemList = () => {
+
+        const address =  { 
+            id: 0, 
+            address : '', 
+            number : '' 
+        }
+
+        let newDataObject = Object.assign( {}, dataObject );
+
+        newDataObject.person.addresses.unshift( address );
+
+        console.log( newDataObject );
+
+        setDataObject( newDataObject );
+
+    }
+
+    const removeItemList = () => {
+
+        if ( index >= 0 ) {
+
+            let newDataObject = Object.assign( {}, dataObject );
+
+            newDataObject.person.addresses.splice( index, 1 );
+
+            setDataObject( newDataObject );
+
+            console.log( dataObject );
+
+        }
+
+    }
+
+    //****** */
 
     return (
             <ObjectEditor>
@@ -275,10 +305,10 @@ function EditObject( props ) {
                                     <ObjectListToolBar>
                                         <ToolBarButtons>                    
                                         {
-                                            createBtnAction( handleClickBack, '', 'add-black', null )
+                                            createBtnAction( addItemList, '', 'add-black', null )
                                         }               
                                         {
-                                            createBtnAction( handleClickSave, '', 'remove-black', null )
+                                            createBtnAction( removeItemList, '', 'remove-black', null )
                                         }
                                         </ToolBarButtons>
 
@@ -291,12 +321,13 @@ function EditObject( props ) {
                                                 keyProp={'id'}
                                                 specColumns={[{
                                                         name: "address", 
-                                                        title: "Descrição",
+                                                        title: "",
                                                         dataType: "string",
                                                         idData: "",
                                                         idTitle: "" 
                                                 }]}
                                                 onAfterSelect={handleSelect}
+                                                showTitle={false}
                                                 //actions={actions}
                                             />}
                                         </ObjectListMain>

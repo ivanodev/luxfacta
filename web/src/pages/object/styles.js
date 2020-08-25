@@ -246,7 +246,7 @@ export const ObjectList = styled.div`
 
 export const ObjectListToolBar = styled.div`
     width : 100%;
-    height: 4rem;
+    height: 3.5rem;
 
     background: linear-gradient(to bottom,  #ffffff 0%,#fff9f9 100%,#fff9f9 60%,#ffffff 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#f9f9f9',GradientType=0 );
@@ -267,16 +267,22 @@ export const ObjectListToolBar = styled.div`
         justify-content: center;
         align-items: center;
         border-color:var(--color-line-in-white);
-        border-radius:2.2rem;
+        border-radius:2rem;
         border-style: solid;
         border-width: 0;
         box-shadow: 0;
         background-color: transparent;
         opacity: 1;
         transition: background-color 15ms; 
-        height: 3.3rem;
-        width: 3.3rem;
+        height: 3rem;
+        width: 3rem;
         cursor: pointer;
+
+        img {
+            display : flex;
+            align-items : center;
+            justify-content : center;
+        }
 
         :hover {
             background-color: #f2f2f2;
@@ -302,7 +308,7 @@ export const ObjectListMain = styled.div`
 
     display : flex;
     align-items : center;
-    justify-content : center;
+    justify-content : start;
 
     padding : 0.4rem;
 

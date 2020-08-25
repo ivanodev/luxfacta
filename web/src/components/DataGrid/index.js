@@ -4,7 +4,7 @@ import ObjectUtils from '../../utils/ObjectUtils';
 
 export default function DataGrid ( props ) {
 
-    const { data, keyProp, specColumns, actions } = props;
+    const { data, keyProp, specColumns, actions, showTitle } = props;
     const { onBeforeSelect, onAfterSelect } = props;
 
     const selectedRowData = useRef();
@@ -142,10 +142,12 @@ export default function DataGrid ( props ) {
         <div className="data-grid" >
             <table className="table-data-grid" nMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
                 <thead>
-                    <tr className="header-data-grid">
-                        { columnHeadingFactory() }
-                        { actions && <th key="actions" className="header-col-action-data-grid">Ações</th> }
-                    </tr>
+                    {   showTitle &&
+                        <tr className="header-data-grid">
+                            { columnHeadingFactory() }
+                            { actions && <th key="actions" className="header-col-action-data-grid">Ações</th> }
+                        </tr>
+                    }
                 </thead>
                 <tbody>
                 { data &&
