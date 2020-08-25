@@ -44,7 +44,15 @@ function EditObject( props ) {
                         { id: 0, address : 'Rua Monsenhor Januario', number : "36" },
                         { id: 1, address : 'Rua Alfredo Pujol', number : "17"},
                         { id: 2, address : 'Rua Firminopolis',  number : "12"},
-                        { id: 3, address : 'Rua Naninãna', number : "45" }
+                        { id: 3, address : 'Rua Naninãna', number : "45" },
+                        { id: 3, address : 'Rua Naninãna', number : "45" },
+                        { id: 3, address : 'Rua Naninãna', number : "45" },
+                        { id: 3, address : 'Rua Naninãna', number : "45" },
+                        { id: 3, address : 'Rua Naninãna', number : "45" },
+                        { id: 3, address : 'Rua Naninãna', number : "45" },
+                        { id: 3, address : 'Rua Naninãna', number : "45" },
+                        
+
                     ]
                 }
 
@@ -103,6 +111,16 @@ function EditObject( props ) {
 
     }
 
+    const [ address, setAddress ] = useState(null);
+    const [ index, setIndex ] = useState(0);
+
+    const handleSelect = ( ...params ) => {
+
+        setAddress( params[ 0 ] );
+        setIndex( params[ 1 ]);
+
+    }
+
     return (
             <ObjectEditor>
                 <ObjectEditorHeader>
@@ -148,7 +166,7 @@ function EditObject( props ) {
                                                 <InputData
                                                     id="actor.person.federalDoc"
                                                     value={dataObject.person.federalDoc}
-                                                    onChange={(e)=>handleChange(e )}
+                                                    onChange={(e)=>handleChange(e)}
                                                 />
                                             </Input>
                                             <Input>
@@ -245,68 +263,106 @@ function EditObject( props ) {
                                     }
                                 </ObjectLayout>
                             </Layout>
+                        </LayoutContent> 
+
+                        <LayoutContent  columns={1}>
                             <Layout>
                                 <LayoutTitle>
                                     <label>Endereços</label>
                                     <hr/>
                                 </LayoutTitle>
-                                <ObjectLayout columns={1} color="white" > 
-                                    { dataObject &&
-                                        <>
-                                            <ObjectList>
-                                                <ObjectListToolBar>
-                                                </ObjectListToolBar>
-                                                <ObjectListContent>
-                                                    <ObjectListMain>
-                                                        <DataGrid 
-                                                            data={dataObject.person.addresses}
-                                                            keyProp={'id'}
-                                                            specColumns={[{
-                                                                    name: "address", 
-                                                                    title: "Descrição",
-                                                                    dataType: "string",
-                                                                    idData: "",
-                                                                    idTitle: "" 
-                                                            }]}
-                                                            //actions={actions}
-                                                        />
-                                                    </ObjectListMain>
-                                                    <ObjectListDetail>
-                                                    <Layout>
-                                                        <ObjectLayout columns={2} color="white" >   
-                                                        { dataObject && 
-                                                                <>  
-                                                                    <Input>
-                                                                        <InputLabel htmlFor="address.address">
-                                                                            Rua
-                                                                        </InputLabel>
-                                                                        <InputData
-                                                                            id="address.address"
-                                                                            value={dataObject.person.addresses[0].address}
-                                                                        />
-                                                                    </Input>
-                                                                    <Input>
-                                                                        <InputLabel htmlFor="address.number" >
-                                                                            Number
-                                                                        </InputLabel>
-                                                                        <InputData
-                                                                            id="address.number"
-                                                                            value={dataObject.person.addresses[0].number}
-                                                                        />
-                                                                    </Input>                                                                    
-                                                                </>
-                                                            }
-                                                        </ObjectLayout>
-                                                    </Layout>
-                                                    </ObjectListDetail>
-                                                </ObjectListContent>
-                                            </ObjectList>
-                                        </>
-                                    }
-                                </ObjectLayout>
+                                <ObjectList columns={1} color="black" >
+                                    <ObjectListToolBar>
+                                        <ToolBarButtons>                    
+                                        {
+                                            createBtnAction( handleClickBack, '', 'add-black', null )
+                                        }               
+                                        {
+                                            createBtnAction( handleClickSave, '', 'remove-black', null )
+                                        }
+                                        </ToolBarButtons>
 
+                                    </ObjectListToolBar>
+                                    <ObjectListContent>
+                                        <ObjectListMain>
+                                            { dataObject &&
+                                            <DataGrid 
+                                                data={dataObject.person.addresses}
+                                                keyProp={'id'}
+                                                specColumns={[{
+                                                        name: "address", 
+                                                        title: "Descrição",
+                                                        dataType: "string",
+                                                        idData: "",
+                                                        idTitle: "" 
+                                                }]}
+                                                onAfterSelect={handleSelect}
+                                                //actions={actions}
+                                            />}
+                                        </ObjectListMain>
+                                        <ObjectListDetail>
+                                            <Layout>
+                                                <ObjectLayout columns={2} color="white" >   
+                                                { dataObject && 
+                                                        <>  
+                                                            <Input>
+                                                                <InputLabel htmlFor="actor.person.addresses.3.address">
+                                                                    Rua
+                                                                </InputLabel>
+                                                                <InputData
+                                                                    id={`actor.person.addresses.${index}.address`}
+                                                                    value={dataObject.person.addresses[index].address}
+                                                                    onChange={(e)=>handleChange(e)}
+                                                                />
+                                                            </Input>
+                                                            <Input>
+                                                                <InputLabel htmlFor="address.number" >
+                                                                    Number
+                                                                </InputLabel>
+                                                                <InputData
+                                                                    id={`actor.person.addresses.${index}.number`}
+                                                                    value={dataObject.person.addresses[index].number}
+                                                                    onChange={(e)=>handleChange(e)}
+                                                                />
+                                                            </Input>     
+                                                                                                                                
+                                                        </>
+                                                }
+                                                {/*
+                                                    address &&
+                                                    <>
+                                                            <Input>
+                                                                <InputLabel htmlFor="address.address">
+                                                                    Rua
+                                                                </InputLabel>
+                                                                <InputData
+                                                                    id="address.address"
+                                                                    value={address.address}
+                                                                    onChange={(e)=>handleChange(e)}
+                                                                />
+                                                            </Input>
+                                                            <Input>
+                                                                <InputLabel htmlFor="address.number" >
+                                                                    Number
+                                                                </InputLabel>
+                                                                <InputData
+                                                                    id="address.number"
+                                                                    value={address.number}
+                                                                    onChange={(e)=>handleChange(e)}
+                                                                />
+                                                            </Input>     
+                                                                    
+                                                    </>
+                                                */}
+                                                </ObjectLayout>
+                                            </Layout>
+                                        </ObjectListDetail>
+                                    </ObjectListContent>
+                                   
+                                </ObjectList>
                             </Layout>
-                        </LayoutContent>   
+                        </LayoutContent>
+
                     </ObjectContent>
                 </ObjectView>
             </ObjectEditor>

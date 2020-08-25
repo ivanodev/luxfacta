@@ -5,11 +5,19 @@ import ObjectUtils from '../../utils/ObjectUtils';
 export default function DataGrid ( props ) {
 
     const { data, keyProp, specColumns, actions } = props;
+    const { onBeforeSelect, onAfterSelect } = props;
+
     const selectedRowData = useRef();
 
-    const selectRowData = ( rowData ) => {
+    const selectRowData = ( rowData, index ) => {
+
+        if ( onBeforeSelect )
+            onBeforeSelect( rowData, index );
 
         selectedRowData.current = rowData;
+
+        if ( onAfterSelect )
+            onAfterSelect( rowData, index );
 
     }
 
@@ -106,9 +114,9 @@ export default function DataGrid ( props ) {
 
     }
 
-    const handleRowClick = ( e, item ) => {
+    const handleRowClick = ( e, item, index ) => {
 
-        selectRowData( item );
+        selectRowData( item, index );
 
     } 
 
@@ -141,11 +149,11 @@ export default function DataGrid ( props ) {
                 </thead>
                 <tbody>
                 { data &&
-                    data.map( item => (
+                    data.map( ( item, index ) => (
                         
                         <tr key={item[ keyProp ] }
                             className="row-data-data-grid"
-                            onClick={ ( e )=>handleRowClick( e, item )}
+                            onClick={ ( e )=>handleRowClick( e, item, index )}
                         > 
                             { rowDataFactory( item ) } 
 
