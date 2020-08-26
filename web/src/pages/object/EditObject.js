@@ -10,7 +10,7 @@ import { Input, InputData, InputLabel } from './styles';
 import { ObjectEditor } from './styles';
 import { ObjectEditorHeader } from './styles';
 import { ToolBarContainer, ToolBarButtons } from './styles';
-import { ObjectList, ObjectListMain, ObjectListDetail, ObjectListToolBar, ObjectListContent } from './styles';
+import { ObjectList, ObjectListMaster, ObjectListDetail, ObjectListToolBar, ObjectListContent, ObjectListSeparator } from './styles';
 
 import saveIcon from '../../image/24/save.png';
 import backIcon from '../../image/24/back.png';
@@ -41,11 +41,12 @@ function EditObject( props ) {
                        comercial : ''     
                     },
                     addresses : [
-                        { id: 0, address : 'Rua Monsenhor Januario', number : "36" },
-                        { id: 1, address : 'Rua Alfredo Pujol', number : "17"},
-                        { id: 2, address : 'Rua Firminopolis',  number : "12"},
-                        { id: 3, address : 'Rua Naninãna', number : "45" },
+                        { id: 1, address : 'Rua Monsenhor Januario', number : "36" },
+                        { id: 2, address : 'Rua Alfredo Pujol', number : "17"},
+                        { id: 3, address : 'Rua Firminopolis',  number : "12"},
+                        { id: 4, address : 'Rua Naninãna', number : "45" },
                     ]
+
                 }
 
             });
@@ -127,9 +128,12 @@ function EditObject( props ) {
 
         newDataObject.person.addresses.unshift( address );
 
-        console.log( newDataObject );
-
         setDataObject( newDataObject );
+
+        const element = document.getElementById( `actor.person.addresses.${0}.address` );
+        
+        if ( element )
+            element.focus();
 
     }
 
@@ -142,8 +146,6 @@ function EditObject( props ) {
             newDataObject.person.addresses.splice( index, 1 );
 
             setDataObject( newDataObject );
-
-            console.log( dataObject );
 
         }
 
@@ -314,7 +316,7 @@ function EditObject( props ) {
 
                                     </ObjectListToolBar>
                                     <ObjectListContent>
-                                        <ObjectListMain>
+                                        <ObjectListMaster>
                                             { dataObject &&
                                             <DataGrid 
                                                 data={dataObject.person.addresses}
@@ -330,7 +332,10 @@ function EditObject( props ) {
                                                 showTitle={false}
                                                 //actions={actions}
                                             />}
-                                        </ObjectListMain>
+                                        </ObjectListMaster>
+                                        <ObjectListSeparator>
+                                                <div/>
+                                        </ObjectListSeparator>
                                         <ObjectListDetail>
                                             <Layout>
                                                 <ObjectLayout columns={2} color="white" >   
@@ -359,32 +364,6 @@ function EditObject( props ) {
                                                                                                                                 
                                                         </>
                                                 }
-                                                {/*
-                                                    address &&
-                                                    <>
-                                                            <Input>
-                                                                <InputLabel htmlFor="address.address">
-                                                                    Rua
-                                                                </InputLabel>
-                                                                <InputData
-                                                                    id="address.address"
-                                                                    value={address.address}
-                                                                    onChange={(e)=>handleChange(e)}
-                                                                />
-                                                            </Input>
-                                                            <Input>
-                                                                <InputLabel htmlFor="address.number" >
-                                                                    Number
-                                                                </InputLabel>
-                                                                <InputData
-                                                                    id="address.number"
-                                                                    value={address.number}
-                                                                    onChange={(e)=>handleChange(e)}
-                                                                />
-                                                            </Input>     
-                                                                    
-                                                    </>
-                                                */}
                                                 </ObjectLayout>
                                             </Layout>
                                         </ObjectListDetail>

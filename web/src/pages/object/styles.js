@@ -294,21 +294,23 @@ export const ObjectListToolBar = styled.div`
 export const ObjectListContent = styled.div`
     width: 100%;
     height: 100%;
-    display : grid;
-    grid-template-columns : 20% 80%;
-
+    display : flex;
+    align-items: center;
+    justify-content : flex-start;
+        
     border-radius : 0.8rem;
     padding : 0.2rem;
-`;
-
-export const ObjectListMain = styled.div` 
-    width : 100%;
-    height: 100%;
-    background-color: #fff;
 
     display : flex;
-    align-items : center;
-    justify-content : start;
+    justify-content : flex-start;
+    align-items : flex-start;
+
+`;
+
+export const ObjectListMaster = styled.div` 
+    width : 20%;
+    height: 100%;
+    background-color: #fff;
 
     padding : 0.4rem;
 
@@ -316,6 +318,26 @@ export const ObjectListMain = styled.div`
         width : 100%;
         height : 100%;
         background-color : #fff;
+    }
+
+`;
+
+export const ObjectListSeparator = styled.div`
+    width : 1rem;
+    height : 0.5rem;
+    align-self : center;
+
+    border-right : solid 0.1rem var(--color-line-in-white);
+    border-left : solid 0.1rem var(--color-line-in-white);
+
+    padding: 0.2rem;
+
+    div {
+        width : 0.1rem;
+        height : 2rem;
+        background-color : #ddd;
+        cursor: e-resize;
+        justify-self : center;
     }
 
 `;

@@ -153,7 +153,7 @@ export default function DataGrid ( props ) {
                 { data &&
                     data.map( ( item, index ) => (
                         
-                        <tr key={item[ keyProp ] }
+                        <tr key={ item[ keyProp ] }
                             className="row-data-data-grid"
                             onClick={ ( e )=>handleRowClick( e, item, index )}
                         > 
