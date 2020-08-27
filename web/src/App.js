@@ -9,6 +9,7 @@ import EditObject from './pages/object/EditObject';
 
 export default function App() {
 
+	/*
 
 	return (
 		<div>
@@ -16,7 +17,9 @@ export default function App() {
 		</div>
 	)
 
-	/*
+	//*/
+
+	
 
 	return (
 		<div>
@@ -27,6 +30,6 @@ export default function App() {
 		</div>
 	);
 
-	*/	
+		
 	
 }

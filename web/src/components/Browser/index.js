@@ -65,20 +65,24 @@ function Browser( props ) {
 
         const svOProps = specView.svOProps;
 
-        const createSpecColumn = ( name, title, dataType, idData = '', idTitle = '' ) => {
+        const createSpecColumn = ( name, title, dataType, path, idData = '', idTitle = '' ) => {
             return { 
                 name: name, 
                 title: title,
                 dataType: dataType,
                 idData: idData,
-                idTitle: idTitle 
+                idTitle: idTitle,
+                path: path 
             };
         }
 
         for ( let i = 0; i < svOProps.length; i++) {
     
             const prop = svOProps[ i ];
-            const specColumn = createSpecColumn( prop.name, prop.label, prop.dataType );
+
+            console.log(`${prop.path}.${prop.name}` );
+
+            const specColumn = createSpecColumn( prop.name, prop.label, prop.dataType, `${prop.path}.${prop.name}` );
             
             specColumns.current.push( specColumn );
     

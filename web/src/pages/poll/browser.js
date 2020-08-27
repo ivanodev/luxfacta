@@ -16,7 +16,7 @@ function PollBrowser( props ) {
     ];
 
   
-
+    /*
     return (
         <form>
             <div id="poll-browser" className="container" >
@@ -30,6 +30,21 @@ function PollBrowser( props ) {
             </div>
         </form>
     );
+    */
+
+   return (
+    <form>
+        <div id="poll-browser" className="container" >
+            <Browser
+                urn='actor' 
+                title='Ator' 
+                keyProp={'id'} 
+                specView={SpecViewPollBrowser}
+                //customActions={customActions}
+            />
+        </div>
+    </form>
+);    
 
 }
 

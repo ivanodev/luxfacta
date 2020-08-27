@@ -277,3 +277,18 @@ export default class ObjectUtils {
 }
 
 
+/*
+
+.datagrid-header, .datagrid-toolbar, .datagrid-pager, .datagrid-footer-inner {
+    border-color: #ddd;
+}
+.datagrid-header, .datagrid-td-rownumber {
+    background-color: #fafafa;
+    background: -webkit-linear-gradient(top,#fdfdfd 0,#f5f5f5 100%);
+    background: -moz-linear-gradient(top,#fdfdfd 0,#f5f5f5 100%);
+    background: -o-linear-gradient(top,#fdfdfd 0,#f5f5f5 100%);
+    background: linear-gradient(to bottom,#fdfdfd 0,#f5f5f5 100%);
+    background-repeat: repeat-x;
+
+
+    */
