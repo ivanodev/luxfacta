@@ -27,7 +27,7 @@ export const ObjectEditorHeader = styled.div`
     border-top-left-radius: 0.8rem;
 `;
 
-export const ToolBarContainer = styled.div `
+export const ToolBarContainer = styled.div`
     width : 100%;
     height : 4rem;
     background-color : #fff;
@@ -301,7 +301,7 @@ export const ObjectListContent = styled.div`
     border-radius : 0.8rem;
     padding : 0.2rem;
 
-    display : flex;
+    display : inline-flex;
     justify-content : flex-start;
     align-items : flex-start;
 
@@ -318,27 +318,24 @@ export const ObjectListMaster = styled.div`
         width : 100%;
         height : 100%;
         background-color : #fff;
+        border-right : solid 0.1rem var(--color-line-in-white);
     }
 
 `;
 
 export const ObjectListSeparator = styled.div`
-    width : 1rem;
-    height : 0.5rem;
+    width : 0.15rem;
+    height : 2rem;
     align-self : center;
-
+   
     border-right : solid 0.1rem var(--color-line-in-white);
     border-left : solid 0.1rem var(--color-line-in-white);
 
-    padding: 0.2rem;
+    display : flex;
+    align-items : center;
+    justify-content : center;   
 
-    div {
-        width : 0.1rem;
-        height : 2rem;
-        background-color : #ddd;
-        cursor: e-resize;
-        justify-self : center;
-    }
+    cursor: col-resize; 
 
 `;
 

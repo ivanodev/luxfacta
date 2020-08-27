@@ -12,8 +12,7 @@ import { ObjectEditorHeader } from './styles';
 import { ToolBarContainer, ToolBarButtons } from './styles';
 import { ObjectList, ObjectListMaster, ObjectListDetail, ObjectListToolBar, ObjectListContent, ObjectListSeparator } from './styles';
 
-import saveIcon from '../../image/24/save.png';
-import backIcon from '../../image/24/back.png';
+
 import { ButtonFactory } from '../../components/Button';
 import { findObjectIndex } from '../../utils/ArrayUtils';
 import ObjectUtils from '../../utils/ObjectUtils';
@@ -131,6 +130,9 @@ function EditObject( props ) {
         setDataObject( newDataObject );
 
         const element = document.getElementById( `actor.person.addresses.${0}.address` );
+    
+        setIndex( 0 );
+        selectRow( 0 );
         
         if ( element )
             element.focus();
@@ -147,7 +149,42 @@ function EditObject( props ) {
 
             setDataObject( newDataObject );
 
+            if ( newDataObject.person.addresses.length > 0 ) {
+
+                if ( index > 0 )
+                    setIndex( index - 1 );
+
+            }
+
         }
+
+    }
+
+    const evenLineColor = '#fff9f9';
+    const oddLineColor = '#ffffff';
+    const selectedLineColor = '#ffff00';
+
+    const selectRow = rowNumber =>  {
+
+        let isRowEven = false;
+    
+        var htmlCollection = document.getElementsByClassName('row-data-data-grid');
+
+        for ( let i = 0; i < htmlCollection.length; i++ ) {
+
+            let row = htmlCollection[ i ];
+
+            isRowEven = i % 2 === 0; // check if the index is an even number
+
+            if ( isRowEven ) 
+                row.style.background = evenLineColor;
+            else    
+                row.style.background = oddLineColor;
+
+            if ( rowNumber === i )            
+                row.style.background = selectedLineColor;
+            
+        } 
 
     }
 
@@ -339,7 +376,7 @@ function EditObject( props ) {
                                         <ObjectListDetail>
                                             <Layout>
                                                 <ObjectLayout columns={2} color="white" >   
-                                                { dataObject && 
+                                                { dataObject && dataObject.person.addresses.length > 0 &&
                                                         <>  
                                                             <Input>
                                                                 <InputLabel htmlFor="actor.person.addresses.3.address">

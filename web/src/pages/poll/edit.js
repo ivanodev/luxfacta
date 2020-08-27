@@ -2,8 +2,7 @@ import React from 'react';
 import Edit from '../../components/Edit';
 import { SpecViewLayout, LayoutType } from '../../infra/specview/SpecViewLayout';
 import { SpecViewPoll, SpecViewOptions } from './specview';
-import saveIcon from '../../image/24/save.png';
-import backIcon from '../../image/24/back.png';
+
 
 import './styles.scss';
 import EntityInstance from '../../infra/entity/EntityInstance';
