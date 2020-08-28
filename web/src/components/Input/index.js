@@ -1,5 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { InputContent, InputLabel, InputData } from './styles';
+import ObjectUtils from '../../utils/ObjectUtils';
+
+export default function Input( props ) {
+
+    const { spec, value } = props;
+    const { onUpdateState } = props;
+
+    const handleChange = event => {
+
+        if ( onUpdateState )
+            onUpdateState( event );
+
+    }
+
+    return (
+        <InputContent>
+            <InputLabel htmlFor={spec.path}>
+                {spec.label}
+            </InputLabel>
+            <InputData
+                id={spec.path}
+                //value={ ObjectUtils.getPropertyValue( data, spec.path ) }
+                value={value}
+                auto-complete="off"
+                onChange={handleChange}
+            />
+        </InputContent>
+    )
+
+}
+
+
+/*
 import './styles.scss';
 
 export default function Input( props ) {
@@ -37,7 +71,7 @@ export default function Input( props ) {
         if ( spec && spec.onInput )
             spec.onInput( e );
                     
-    }    */
+    }    
 
     return (
 
@@ -63,4 +97,4 @@ export default function Input( props ) {
     );
 
 }
-
+*/

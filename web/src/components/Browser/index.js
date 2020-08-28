@@ -80,9 +80,7 @@ function Browser( props ) {
     
             const prop = svOProps[ i ];
 
-            console.log(`${prop.path}.${prop.name}` );
-
-            const specColumn = createSpecColumn( prop.name, prop.label, prop.dataType, `${prop.path}.${prop.name}` );
+            const specColumn = createSpecColumn( prop.name, prop.label, prop.dataType, prop.path );
             
             specColumns.current.push( specColumn );
     
@@ -102,8 +100,7 @@ function Browser( props ) {
     const handleClickEdit = ( event, item ) => {
 
         const id = ObjectUtils.getPropertyValue( item, keyProp );
-
-        props.history.push(`/${urn}/${id}`);
+        props.history.push( `/${urn}/${id}` );
 
     }
 

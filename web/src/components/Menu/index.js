@@ -5,7 +5,7 @@ function Menu( props ) {
 
     function pollHandleClick() {
 
-        props.history.push( `/${'poll'}` );
+        props.history.push( `/${'actor'}` );
 
     }
 

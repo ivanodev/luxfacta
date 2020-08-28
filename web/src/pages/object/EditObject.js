@@ -12,11 +12,13 @@ import { ObjectEditorHeader } from './styles';
 import { ToolBarContainer, ToolBarButtons } from './styles';
 import { ObjectList, ObjectListMaster, ObjectListDetail, ObjectListToolBar, ObjectListContent, ObjectListSeparator } from './styles';
 
+import WInput from '../../components/Input';
 
 import { ButtonFactory } from '../../components/Button';
 import { findObjectIndex } from '../../utils/ArrayUtils';
 import ObjectUtils from '../../utils/ObjectUtils';
 import DataGrid from '../../components/DataGrid';
+import { get } from '../../service/api';
 
 function EditObject( props ) {
 
@@ -26,29 +28,13 @@ function EditObject( props ) {
 
         const fecth = async () => {
 
-            setDataObject({
-                _id  : 0,
-                actorType : ['company', 'customer', 'supplier', 'user'],
-                person : {
-                    fullName : 'Ivano Carvalho',
-                    federalDoc : '28731415814',
-                    stateDoc: '3013167604',
-                    cityDoc: '',
-                    phone : {
-                       residencial : '33334444',
-                       celular: '',
-                       comercial : ''     
-                    },
-                    addresses : [
-                        { id: 1, address : 'Rua Monsenhor Januario', number : "36" },
-                        { id: 2, address : 'Rua Alfredo Pujol', number : "17"},
-                        { id: 3, address : 'Rua Firminopolis',  number : "12"},
-                        { id: 4, address : 'Rua Naninãna', number : "45" },
-                    ]
+            const response = await get( 'actor/1' );
 
-                }
+            if ( response ) {
 
-            });
+                setDataObject( response.data );
+
+            }
 
         }
 
@@ -74,8 +60,6 @@ function EditObject( props ) {
      * @param {*} currentObject - Current object that has changed
      */
 
-
-
     const updateState = ( e, currentObject ) => {
 
         try {
@@ -97,7 +81,9 @@ function EditObject( props ) {
 
     }
 
-    const handleChange = ( e ) => {
+    const handleChange = ( e, newValue ) => {
+
+        e.persist();
 
         updateState( e, dataObject );
 
@@ -197,6 +183,17 @@ function EditObject( props ) {
                         Cliente
                     </label>
                 </ObjectEditorHeader>
+
+                <ToolBarContainer>
+                    <ToolBarButtons>                    
+                        {
+                            createBtnAction( handleClickBack, '', 'back', null )
+                        }               
+                        {
+                            createBtnAction( handleClickSave, '', 'save', null )
+                        }
+                    </ToolBarButtons>
+                </ToolBarContainer>
             
                 <ObjectView>
                     <ObjectContent>
@@ -209,6 +206,17 @@ function EditObject( props ) {
                                 <ObjectLayout columns={2}>  
                                     { dataObject && 
                                         <>  
+                                            <WInput
+                                                value={dataObject.person.federalDoc}
+                                                spec={ { path : 'actor.person.federalDoc', label : 'CNPJ'  } }
+                                                onChange={handleChange}
+                                            />
+                                            <WInput
+                                                value={dataObject.person.fullName}
+                                                spec={ { path : 'actor.person.fullName', label : 'Razão Social'  } }
+                                                onUpdateState={handleChange}
+                                            />
+                                            {/*
                                             <Input>
                                                 <InputLabel htmlFor="actor.person.fullName">
                                                     Razão Social
@@ -238,6 +246,7 @@ function EditObject( props ) {
                                                     value={dataObject.person.stateDoc}
                                                 />
                                             </Input>
+                                            */}
                                         </>
                                     }
                                 </ObjectLayout>
@@ -250,7 +259,7 @@ function EditObject( props ) {
                                 <ObjectLayout columns={1}>   
                                 { dataObject && 
                                         <>  
-                                            <Input>
+                                            {/*<Input>
                                                 <InputLabel htmlFor="actor.person.fullName">
                                                     Razão Social
                                                 </InputLabel>
@@ -276,7 +285,7 @@ function EditObject( props ) {
                                                     id="actor.person.stateDoc"
                                                     value={dataObject.person.stateDoc}
                                                 />
-                                            </Input>
+                                            </Input>*/}
                                         </>
                                     }
                                 </ObjectLayout>
@@ -292,7 +301,7 @@ function EditObject( props ) {
                                 <ObjectLayout columns={2} color="white" >   
                                 { dataObject && 
                                         <>  
-                                            <Input>
+                                            {/*<Input>
                                                 <InputLabel htmlFor="actor.person.fullName">
                                                     Razão Social
                                                 </InputLabel>
@@ -318,7 +327,7 @@ function EditObject( props ) {
                                                     id="actor.person.stateDoc"
                                                     value={dataObject.person.stateDoc}
                                                 />
-                                            </Input>
+                                            </Input>*/}
                                         </>
                                     }
                                 </ObjectLayout>
@@ -350,11 +359,12 @@ function EditObject( props ) {
                                                 data={dataObject.person.addresses}
                                                 keyProp={'id'}
                                                 specColumns={[{
-                                                        name: "address", 
+                                                        name: "street", 
                                                         title: "",
                                                         dataType: "string",
+                                                        path: "address.street", 
                                                         idData: "",
-                                                        idTitle: "" 
+                                                        idTitle: ""
                                                 }]}
                                                 onAfterSelect={handleSelect}
                                                 showTitle={false}
@@ -370,17 +380,17 @@ function EditObject( props ) {
                                                 { dataObject && dataObject.person.addresses.length > 0 &&
                                                         <>  
                                                             <Input>
-                                                                <InputLabel htmlFor="actor.person.addresses.3.address">
+                                                                <InputLabel htmlFor={`actor.person.addresses.${index}.street`}>
                                                                     Rua
                                                                 </InputLabel>
                                                                 <InputData
-                                                                    id={`actor.person.addresses.${index}.address`}
-                                                                    value={dataObject.person.addresses[index].address}
+                                                                    id={`actor.person.addresses.${index}.street`}
+                                                                    value={dataObject.person.addresses[index].street}
                                                                     onChange={(e)=>handleChange(e)}
                                                                 />
                                                             </Input>
                                                             <Input>
-                                                                <InputLabel htmlFor="address.number" >
+                                                                <InputLabel htmlFor={`actor.person.addresses.${index}.number`} >
                                                                     Number
                                                                 </InputLabel>
                                                                 <InputData

@@ -1,13 +1,13 @@
 import React from 'react';
 import Menu from '../components/Menu';
-import PollRouter from './poll.routes';
+import ActorRoutes from './actor.routes';
 
 export default function Routes( props ) {
 
     return (
         <>
             <Menu />
-            <PollRouter />
+            <ActorRoutes />
         </>
     )
 
