@@ -58,6 +58,7 @@ export default class ObjectUtils {
 
     }
 
+    /*
     static getPropertyValue( object, path ) {
        
         let value = undefined;
@@ -128,6 +129,64 @@ export default class ObjectUtils {
 
         return value;   
 
+    } */
+
+    static getPropertyValue( object, path ) {
+       
+        let value = undefined;
+        
+        if ( path && path.length > 0 ) {
+
+            const props = path.split( '.' );
+            value = object;
+
+            if ( !value ) return undefined;
+
+            if ( props.length > 1 ) {
+                
+                let name = '';
+
+                for ( let i = 1; i < props.length; i++ ) {
+
+                    name = props[ i ];
+                    value =  value[ name ];
+
+                    if ( !value ) return undefined;
+
+                    if ( Array.isArray( value ) === true ) {
+
+                        const index = parseInt( props[ i + 1 ] );
+
+                        let obj = value[ index ];
+
+                        const newProps = props.slice( i+2, props.length );
+                        let newPath = newProps.toString();
+                        newPath = newPath.replace( ',', '.' );
+
+                        return this.getPropertyValue( obj, newPath );
+                        
+                    }  else if ( typeof value === 'object' ) {
+
+                        const newProps = props.slice( i+1, props.length );
+                        let newPath = newProps.toString();
+                        newPath = newPath.replace( ',', '.' );
+
+                        this.getPropertyValue( value, newPath ); 
+
+                    }  
+
+                }
+
+            } else {
+
+                value = object[ path ]; 
+                
+            } 
+
+            return value;
+
+        }
+
     }
 
     static setPropertyValue( object, path, propValue ) {
@@ -154,8 +213,6 @@ export default class ObjectUtils {
                     if ( !value ) return undefined;
 
                     if ( Array.isArray( value ) === true ) {
-
-                        console.log( 'array',value, name );
 
                         const index = parseInt( props[ i + 1 ] );
 

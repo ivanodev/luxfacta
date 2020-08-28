@@ -4,8 +4,8 @@ import { SpecDataView } from '../../infra/specview/SpecDataView';
 const SVActorBrowser = () => {
 
     let svBrowser = new SpecDataView( 'actor', '', SpecViewType.OBJECT );  
-    svBrowser.addString( 'id', 'actor', '' );  
-    svBrowser.addString( 'fullName', 'actor.person', '' );
+    svBrowser.addString( 'id', '' );  
+    svBrowser.addString( 'person.fullName', '' );
     
     return svBrowser;
 

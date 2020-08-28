@@ -10,15 +10,12 @@ import EditObject from './pages/object/EditObject';
 export default function App() {
 
 	//*
-
 	return (
 		<div>
 			<EditObject />
 		</div>
 	)
-
 	//*/
-
 	
 /*
 	return (

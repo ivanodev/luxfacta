@@ -1,5 +1,37 @@
 import React from 'react';
 
+import { InputContent, InputLabel, InputData } from './styles';
+
+export default function Input( props ) {
+
+    const { spec, value } = props;
+    const { onChange } = props;
+
+    const handleChange = event => {
+
+        if ( onChange )
+            onChange( event );
+
+    }
+
+    return (
+        <InputContent>
+            <InputLabel htmlFor={spec.path}>
+                {spec.label}
+            </InputLabel>
+            <InputData
+                id={spec.path}                
+                value={value}
+                auto-complete="off"
+                onChange={handleChange}
+            />
+        </InputContent>
+    )
+
+}
+
+
+/*
 import './styles.scss';
 
 export default function Input( props ) {
@@ -37,7 +69,7 @@ export default function Input( props ) {
         if ( spec && spec.onInput )
             spec.onInput( e );
                     
-    }    */
+    }    
 
     return (
 
@@ -63,4 +95,4 @@ export default function Input( props ) {
     );
 
 }
-
+*/

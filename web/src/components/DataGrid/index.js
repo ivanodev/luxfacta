@@ -31,8 +31,7 @@ export default function DataGrid ( props ) {
             specColumn = specColumns[i];           
 
             columnHeading.push(
-                <th 
-                    key={specColumn.name}>
+                <th key={specColumn.name}>
                     {specColumn.title}
                 </th>
             );     
@@ -52,7 +51,7 @@ export default function DataGrid ( props ) {
 
             specColumn = specColumns[i];
 
-            const value = ObjectUtils.getPropertyValue( item, specColumn.name );
+            const value = ObjectUtils.getPropertyValue( item, specColumn.path );
 
             /* 
                 verifica os tipos de dados 

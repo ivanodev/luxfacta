@@ -214,8 +214,39 @@ function EditObject( props ) {
                                             <WInput
                                                 value={dataObject.person.fullName}
                                                 spec={ { path : 'actor.person.fullName', label : 'Razão Social'  } }
-                                                onChange={handleChange}
-                                            />                                            
+                                                onUpdateState={handleChange}
+                                            />
+                                            {/*
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.fullName">
+                                                    Razão Social
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.fullName"
+                                                    value={dataObject.person.fullName}
+                                                    onChange={(e)=>handleChange(e)}
+                                                />
+                                            </Input>
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.phone.residencial" >
+                                                    CNPJ
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.federalDoc"
+                                                    value={dataObject.person.federalDoc}
+                                                    onChange={(e)=>handleChange(e)}
+                                                />
+                                            </Input>
+                                            <Input>
+                                                <InputLabel htmlFor="actor.person.stateDoc">
+                                                    RG
+                                                </InputLabel>
+                                                <InputData
+                                                    id="actor.person.stateDoc"
+                                                    value={dataObject.person.stateDoc}
+                                                />
+                                            </Input>
+                                            */}
                                         </>
                                     }
                                 </ObjectLayout>
