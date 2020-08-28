@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { InputContent, InputLabel, InputData } from './styles';
+<<<<<<< HEAD
+=======
+import ObjectUtils from '../../utils/ObjectUtils';
+>>>>>>> c2f1911e6cf95b21be899767c61d5a49100f16bf
 
 export default function Input( props ) {
 
