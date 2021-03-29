@@ -1,52 +1,75 @@
 import styled from 'styled-components';
 
 export const InputContent = styled.div`
-    width : 100%;
-    height: 3.5rem;
-    display : flex;
-    align-items : center;
-    justify-content : flex-start;
+    width: 100%;
+    height: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 `;
 
+export const InputLabelContent = styled.div`
+    width: 100%;
+    height: 2.2rem; //2.0
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+`
 export const InputLabel = styled.label`
-    width: 35%;
-    height: 3.5rem;
+    width: 100%;
+    height: 100%;
 
-    color : #3c4043;
-    font-weight : 500;
-    font-size : 1.2rem;
-    text-shadow: #838383 0em 0em 0.1em;
+    color: var(--input-color-label);
+    font-weight: normal;
+    font-size: 1.4rem;
 
     display: flex;
-    align-items: center;
-    justify-content : flex-end;
-    padding-right : 0.6rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-right: 0.6rem;
 
     white-space: nowrap;
     overflow: auto;
+
+    margin-left: 0.2rem;
+    z-index: 9;
+    pointer-events: none;
+    transition: 200ms ease all;
 `; 
 
 export const InputData = styled.input`
-    width : 65%;
-    height: 3.5rem;
-    padding-left : 0.8rem;
-    padding-right : 0.8rem;
+    display: flex;
+    width: 100%;
+    height: 3.8rem; //3.5
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    align-items: center;
+    text-align: left;
 
-    border : solid 0.1rem #ced4da;
-    border-radius : 0.4rem;
+    border : solid 0.1rem var(--input-color-border);
+    border-radius : var(--input-radius);
 
-    background-color: #ffffff; 
+    background-color: var(--input-color-background); 
 
-    color:#495057;
+    color: var(--input-color);
+    font-weight: normal;
+    font-size: 1.4rem;
+    font-family: var(--input-font-family);
 
-    text-shadow: #f0c3bfad 0.0em 0.0em 0.1em;
     transition: width 0.4s ease-in-out;  
-    box-shadow: inset 0 0 0.2em #ddd;
-
-    :focus {
-        border-color:#66afe999;  
+    //box-shadow: inset 0 0 0.2em var(--input-color-box-shadow);
+    
+    :focus-within {
+        border-color: var(--input-color-border-focus);  
         background: #fbfbfb;
         box-shadow: inset 0 1px 1px #00000013, 0 0 4px #66afe999;
         border-width: 1.5px;
+    };
+
+    :hover {
+        --input-color-border: var(--input-border-color-hover);
+        //box-shadow: 0 0 0 0.1rem var(--input-outline-focus);
     }
+
 `; 

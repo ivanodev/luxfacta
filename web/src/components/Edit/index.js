@@ -8,8 +8,8 @@ import ObjectListView from '../ObjectListView';
 import ObjectUtils from '../../utils/ObjectUtils';
 import EntityInstance from '../../infra/entity/EntityInstance';
 
-import saveIcon from '../../image/24/save.png';
-import backIcon from '../../image/24/back.png';
+import { ImageSave24 as saveIcon } from '../../image/image24';//' '../../image/24/save.png';
+import { ImageBack24 as backIcon } from '../../image/image24';///back.png';
 import { ButtonFactory } from '../Button';
 
 function Edit( props ) {

@@ -91,6 +91,7 @@ export const ObjectView = styled.div`
     justify-content : center;
 
     padding : 1rem;
+   
 `;
 
 export const ObjectContent = styled.div`
@@ -144,7 +145,7 @@ export const LayoutTitle = styled.header`
     padding-left : 2rem;
 
     label {
-        font-weight: normal;
+        font-weight: 500;    
         font-size: 2.4rem;
         color: #696969;
         height: 100%; 
@@ -176,83 +177,59 @@ export const ObjectLayout = styled.div`
     padding-bottom: 2rem;
 
     grid-auto-rows: 6rem;
-    grid-column-gap: 4rem;
+    grid-column-gap: 1rem;
 
     background-color: #fff;
 `; 
 
-export const InputContent = styled.div`
-    width: 100%;
-    height: 7.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+export const Input = styled.div`
+    width : 100%;
+    height: 3.5rem;
+    display : flex;
+    align-items : center;
+    justify-content : flex-start;
 `;
 
-export const InputLabelContent = styled.div`
-    width: 100%;
-    height: 2.2rem; //2.0
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-`
 export const InputLabel = styled.label`
-    width: 100%;
-    height: 100%;
+    width: 35%;
+    height: 3.5rem;
 
-    color: var(--input-color-label);
-    font-weight: normal;
-    font-size: 1.4rem;
-
+    color : #9E9E9E;
+    font-weight : 500;
+    font-size : 1.4rem;
+   
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding-right: 0.6rem;
+    align-items: center;
+    justify-content : flex-end;
+    padding-right : 0.6rem;
 
     white-space: nowrap;
     overflow: auto;
-
-    margin-left: 0.2rem;
-    z-index: 9;
-    pointer-events: none;
-    transition: 200ms ease all;
 `; 
 
 export const InputData = styled.input`
-    display: flex;
-    width: 100%;
-    height: 3.8rem; //3.5
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
-    align-items: center;
-    text-align: left;
-
-    border : solid 0.1rem var(--input-color-border);
-    border-radius : var(--input-radius);
-
-    background-color: var(--input-color-background); 
-
-    color: var(--input-color);
-    font-weight: normal;
-    font-size: 1.4rem;
-    font-family: var(--input-font-family);
-
-    transition: width 0.4s ease-in-out;  
-    //box-shadow: inset 0 0 0.2em var(--input-color-box-shadow);
+    width : 65%;
+    height: 3.5rem;
+    padding-left : 0.8rem;
+    padding-right : 0.8rem;
+   
+    border : solid 0.1rem #ced4da;
+    border-radius : 0.4rem;
     
-    :focus-within {
-        border-color: var(--input-color-border-focus);  
+    background-color: #ffffff; 
+    
+    color:#495057;
+  
+    text-shadow: #f0c3bfad 0.0em 0.0em 0.1em;
+    transition: width 0.4s ease-in-out;  
+    box-shadow: inset 0 0 0.2em #ddd;
+
+    :focus {
+        border-color:#66afe999;  
         background: #fbfbfb;
         box-shadow: inset 0 1px 1px #00000013, 0 0 4px #66afe999;
         border-width: 1.5px;
-    };
-
-    :hover {
-        --input-color-border: var(--input-border-color-hover);
-        //box-shadow: 0 0 0 0.1rem var(--input-outline-focus);
     }
-
 `; 
 
 export const ObjectList = styled.div`

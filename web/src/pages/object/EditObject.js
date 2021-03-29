@@ -6,7 +6,7 @@ import { Layout } from './styles';
 import { LayoutTitle } from './styles';
 import { LayoutContent } from './styles';
 import { ObjectLayout } from './styles';
-import { Input, InputData, InputLabel } from './styles';
+import { InputContent, InputData, InputLabel } from './styles';
 import { ObjectEditor } from './styles';
 import { ObjectEditorHeader } from './styles';
 import { ToolBarContainer, ToolBarButtons } from './styles';
@@ -45,7 +45,6 @@ function EditObject( props ) {
     const handleClickBack = event => {
 
        
-
     }
 
     const handleClickSave = event => {
@@ -228,7 +227,7 @@ function EditObject( props ) {
                                 <ObjectLayout columns={1}>   
                                 { dataObject && 
                                         <>  
-                                            {/*<Input>
+                                            {/*<InputContent>
                                                 <InputLabel htmlFor="actor.person.fullName">
                                                     Razão Social
                                                 </InputLabel>
@@ -236,8 +235,8 @@ function EditObject( props ) {
                                                     id="actor.person.fullName"
                                                     value={dataObject.person.fullName}
                                                 />
-                                            </Input>
-                                            <Input>
+                                            </InputContent>
+                                            <InputContent>
                                                 <InputLabel htmlFor="actor.person.federalDoc" >
                                                     CNPJ
                                                 </InputLabel>
@@ -245,8 +244,8 @@ function EditObject( props ) {
                                                     id="actor.person.federalDoc"
                                                     value={dataObject.person.federalDoc}
                                                 />
-                                            </Input>
-                                            <Input>
+                                            </InputContent>
+                                            <InputContent>
                                                 <InputLabel htmlFor="actor.person.stateDoc">
                                                     RG
                                                 </InputLabel>
@@ -254,7 +253,7 @@ function EditObject( props ) {
                                                     id="actor.person.stateDoc"
                                                     value={dataObject.person.stateDoc}
                                                 />
-                                            </Input>*/}
+                                            </InputContent>*/}
                                         </>
                                     }
                                 </ObjectLayout>
@@ -270,7 +269,7 @@ function EditObject( props ) {
                                 <ObjectLayout columns={2} color="white" >   
                                 { dataObject && 
                                         <>  
-                                            {/*<Input>
+                                            {/*<InputContent>
                                                 <InputLabel htmlFor="actor.person.fullName">
                                                     Razão Social
                                                 </InputLabel>
@@ -278,8 +277,8 @@ function EditObject( props ) {
                                                     id="actor.person.fullName"
                                                     value={dataObject.person.fullName}
                                                 />
-                                            </Input>
-                                            <Input>
+                                            </InputContent>
+                                            <InputContent>
                                                 <InputLabel htmlFor="actor.person.federalDoc" >
                                                     CNPJ
                                                 </InputLabel>
@@ -287,8 +286,8 @@ function EditObject( props ) {
                                                     id="actor.person.federalDoc"
                                                     value={dataObject.person.federalDoc}
                                                 />
-                                            </Input>
-                                            <Input>
+                                            </InputContent>
+                                            <InputContent>
                                                 <InputLabel htmlFor="actor.person.stateDoc">
                                                     RG
                                                 </InputLabel>
@@ -296,7 +295,7 @@ function EditObject( props ) {
                                                     id="actor.person.stateDoc"
                                                     value={dataObject.person.stateDoc}
                                                 />
-                                            </Input>*/}
+                                            </InputContent>*/}
                                         </>
                                     }
                                 </ObjectLayout>
@@ -348,7 +347,7 @@ function EditObject( props ) {
                                                 <ObjectLayout columns={2} color="white" >   
                                                 { dataObject && dataObject.person.addresses.length > 0 &&
                                                         <>  
-                                                            <Input>
+                                                            <InputContent>
                                                                 <InputLabel htmlFor={`actor.person.addresses.${index}.street`}>
                                                                     Rua
                                                                 </InputLabel>
@@ -357,8 +356,8 @@ function EditObject( props ) {
                                                                     value={dataObject.person.addresses[index].street}
                                                                     onChange={(e)=>handleChange(e)}
                                                                 />
-                                                            </Input>
-                                                            <Input>
+                                                            </InputContent>
+                                                            <InputContent>
                                                                 <InputLabel htmlFor={`actor.person.addresses.${index}.number`} >
                                                                     Number
                                                                 </InputLabel>
@@ -367,7 +366,7 @@ function EditObject( props ) {
                                                                     value={dataObject.person.addresses[index].number}
                                                                     onChange={(e)=>handleChange(e)}
                                                                 />
-                                                            </Input>     
+                                                            </InputContent>     
                                                                                                                                 
                                                         </>
                                                 }

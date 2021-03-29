@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 
-import { InputContent, InputLabel, InputData } from './styles';
-<<<<<<< HEAD
-=======
-import ObjectUtils from '../../utils/ObjectUtils';
->>>>>>> c2f1911e6cf95b21be899767c61d5a49100f16bf
+import { InputContent, InputLabelContent, InputLabel, InputData } from './styles';
 
 export default function Input( props ) {
 
@@ -13,21 +9,25 @@ export default function Input( props ) {
 
     const handleChange = event => {
 
-        if ( onChange )
-            onChange( event );
-
+		if ( onChange ) {
+			onChange( event );
+        }
+        
     }
 
     return (
         <InputContent>
-            <InputLabel htmlFor={spec.path}>
-                {spec.label}
-            </InputLabel>
+            <InputLabelContent>
+                <InputLabel htmlFor={spec.path}>
+                    {spec.label}
+                </InputLabel>
+            </InputLabelContent>
             <InputData
                 id={spec.path}                
                 value={value}
                 auto-complete="off"
                 onChange={handleChange}
+                //placeholder={spec.label}
             />
         </InputContent>
     )
