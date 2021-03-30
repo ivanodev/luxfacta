@@ -13,7 +13,7 @@ export default function App() {
 
 	return (
 		<DataLoader endPoint='/actor/1'>
-			<WField entry={'actor.person.fullName'} />
+			<WField entry={'actor.person.fullName'} label={'Razão Social'} />
 		</DataLoader>
 	)
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { LayoutType, SpecViewLayout } from '../../infra/specview/SpecViewLayout';
-import Input from '../Input';
+import Input from '../WInput';
 import { ObjectPropertyType } from '../../infra/specview/SpecViewObjectProp';
-import ObjectUtils from '../../utils/ObjectUtils';
+import ObjectUtils from '../../utils/WObjectUtils';
 import ObjectListView from '../ObjectListView';
 
 import './styles.scss';

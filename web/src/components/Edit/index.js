@@ -5,7 +5,7 @@ import { get } from '../../service/api';
 import { SpecViewType } from '../../infra/specview/SpecView';
 import ObjecView from '../../components/ObjectView';
 import ObjectListView from '../ObjectListView';
-import ObjectUtils from '../../utils/ObjectUtils';
+import ObjectUtils from '../../utils/WObjectUtils';
 import EntityInstance from '../../infra/entity/EntityInstance';
 
 import { ImageSave24 as saveIcon } from '../../image/image24';//' '../../image/24/save.png';

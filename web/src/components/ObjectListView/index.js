@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ObjectUtils from '../../utils/ObjectUtils';
+import WObjectUtils from '../../utils/WObjectUtils';
 import ObjectView from '../ObjectView';
 
 import './styles.scss';
@@ -60,7 +60,7 @@ export default function ObjectListView ( props )  {
                                     onClick={ (e) => handleRowClick( e, item ) } 
                                     >                                        
                                     <td id="col-grid-data-li">
-                                        { ObjectUtils.getPropertyValue( item, 'option_description' ) }
+                                        { WObjectUtils.getPropertyValue( item, 'option_description' ) }
                                     </td>                                                         
                                 </tr>                                          
                             ))}

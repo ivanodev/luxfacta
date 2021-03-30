@@ -1,4 +1,4 @@
-export default class ObjectUtils {
+export default class WObjectUtils {
 
     static findProp = ( object, propPath ) => {
 

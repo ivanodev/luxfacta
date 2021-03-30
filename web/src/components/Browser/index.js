@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import DataGrid from '../DataGrid';
 import { get } from '../../service/api';
-import ObjectUtils from '../../utils/ObjectUtils';
+import ObjectUtils from '../../utils/WObjectUtils';
 import { withRouter } from 'react-router-dom';
 import { ButtonFactory } from '../Button';
 

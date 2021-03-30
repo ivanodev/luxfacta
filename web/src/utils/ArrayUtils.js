@@ -1,4 +1,4 @@
-import ObjectUtils from "./ObjectUtils";
+import ObjectUtils from "./WObjectUtils";
 
 export function removeItemInArray( array, key, value ) {
 

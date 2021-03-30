@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 import { InputContent, InputLabelContent, InputLabel, InputData } from './styles';
 
-export default function Input( props ) {
+export default function WInput( props ) {
 
-    const { spec, value } = props;
-    const { onChange } = props;
+    const { value, entry, onChange } = props;
 
     const handleChange = event => {
 
@@ -16,20 +15,20 @@ export default function Input( props ) {
     }
 
     return (
-        <InputContent>
-            <InputLabelContent>
-                <InputLabel htmlFor={spec.path}>
-                    {spec.label}
-                </InputLabel>
-            </InputLabelContent>
+       // <InputContent>
+       //     <InputLabelContent>
+      //          <InputLabel htmlFor={spec.path}>
+      //              {spec.label}
+      //          </InputLabel>
+      //      </InputLabelContent>
             <InputData
-                id={spec.path}                
-                value={value}
+                id={entry}               
+                defaultValue={value}
                 auto-complete="off"
                 onChange={handleChange}
                 //placeholder={spec.label}
             />
-        </InputContent>
+      //  </InputContent>
     )
 
 }

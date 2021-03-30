@@ -8,7 +8,6 @@ export default function DataLoader(props) {
   const [data, setData] = useState(undefined);
 
   useEffect(() => {
-
     const fecthData = async () => {
       
       const response = await get(endPoint);
@@ -16,6 +15,8 @@ export default function DataLoader(props) {
       if (response) {
         setData(response.data);
       }
+
+      console.log( response );
 
     }
 

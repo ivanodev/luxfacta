@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { ButtonFactory } from '../Button';
-import ObjectUtils from '../../utils/ObjectUtils';
+import ObjectUtils from '../../utils/WObjectUtils';
 
 export default function DataGrid ( props ) {
 

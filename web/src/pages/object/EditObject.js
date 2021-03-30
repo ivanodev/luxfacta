@@ -12,11 +12,11 @@ import { ObjectEditorHeader } from './styles';
 import { ToolBarContainer, ToolBarButtons } from './styles';
 import { ObjectList, ObjectListMaster, ObjectListDetail, ObjectListToolBar, ObjectListContent, ObjectListSeparator } from './styles';
 
-import WInput from '../../components/Input';
+import WInput from '../../components/WInput';
 
 import { ButtonFactory } from '../../components/Button';
 import { findObjectIndex } from '../../utils/ArrayUtils';
-import ObjectUtils from '../../utils/ObjectUtils';
+import ObjectUtils from '../../utils/WObjectUtils';
 import DataGrid from '../../components/DataGrid';
 import { get } from '../../service/api';
 
