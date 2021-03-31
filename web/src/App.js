@@ -9,10 +9,15 @@ import EditObject from './pages/object/EditObject';
 import DataLoader from './infra/DataLoader';
 import WField from './components/WField';
 import WInput from './components/WInput';
+import WForm from './components/WForm';
 
 export default function App() {
 
-	return (
+	/*return (
+		<WForm />
+	)*/
+
+	/*return (
 		<DataLoader endPoint='/actor/1'>
 			<WField entry={'actor.person.fullName'} label={'Razão Social'}>
 				<WInput 
@@ -21,9 +26,9 @@ export default function App() {
 				/>
 			</WField>
 		</DataLoader>
-	)
+	)*/
 
-	/*
+	//*
 	return (
 		<div>
 			<EditObject />
