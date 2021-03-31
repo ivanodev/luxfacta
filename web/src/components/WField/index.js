@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FieldContainer, FieldContent, FieldLabel, FieldLabelContent } from './style';
-import WInput from '../WInput';
 import WObjectUtils from '../../utils/WObjectUtils';
 
 export default function WField(props) {
@@ -19,27 +18,11 @@ export default function WField(props) {
 	const [ data, setData ] = useState(props.data);
 	const [ entry ] = useState(props.entry);
 	const [ label ] = useState(props.label);
+	const [ children ] = useState(props.children);
 
-	console.log(props)
+	let  inherited = props.inherited;
 
-
-	const [inherited] = useState(props.inherited);
-	const [newData, setNewData] = useState(undefined);
-
-	function handleClick() {
-
-		if (data) {
-			const newData = Object.assign({}, data);
-			newData.person.fullName = 'Ivano Carvalho';
-			setData(newData);
-		}
-
-		inherited.onChange();
-		setNewData(newData);
-
-	}
-
-	const onChange = ( event ) => {
+	const handleChange = ( event ) => {
 
 		let newValue = undefined; 
 
@@ -52,6 +35,38 @@ export default function WField(props) {
 			const newData = Object.assign({}, data);
 			WObjectUtils.setPropertyValue( newData, entry, newValue );
 			setData(newData);
+
+			console.log(newValue);
+
+		}
+
+	}
+
+	const onBlur = ( event ) => {
+
+	}
+
+	const onKeyUp = ( event ) => {
+
+	}
+
+	const renderChildren = () => {
+
+		if ( data ) {
+
+			inherited = {
+				...inherited,
+				value: WObjectUtils.getPropertyValue(data, entry),
+				entry: entry,
+				onChange: handleChange,
+				onBlur: onBlur,
+				onKeyUp: onKeyUp
+			}
+			
+			return React.Children.map(children, (child, i) => {
+				return React.cloneElement(child, { inherited : inherited } );
+			});
+
 		}
 
 	}
@@ -64,14 +79,8 @@ export default function WField(props) {
 				</FieldLabel>
 			</FieldLabelContent>
 			<FieldContent>
-				<WInput onChange={onChange} value={WObjectUtils.getPropertyValue(data, entry)} />
+				{renderChildren()} 
 			</FieldContent>
-			
-				{/*<div>{dataGrid.person.fullName}</div>
-				<button onClick={()=>handleClick()}></button>
-				{ newData &&
-					<div>{newData.person.fullName}</div>
-				*/}
 		</FieldContainer>
 	);
 

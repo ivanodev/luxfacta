@@ -50,8 +50,6 @@ function EditObject( props ) {
 
     const handleClickSave = event => {
 
-       console.log( dataObject );
-
     }
 
     /**

@@ -16,8 +16,6 @@ export default function DataLoader(props) {
         setData(response.data);
       }
 
-      console.log( response );
-
     }
 
     fecthData();
@@ -50,7 +48,6 @@ export default function DataLoader(props) {
   }  
 
   return (
-
     <> 
       {
         data &&

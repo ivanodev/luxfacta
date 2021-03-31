@@ -283,8 +283,6 @@ export default class WObjectUtils {
     
             } else {
 
-                //console.log( 'else', object, propValue );
-
                 object[ path ] = propValue; 
                 
             } 
